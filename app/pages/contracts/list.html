@@ -1,0 +1,53 @@
+<section class="contracts-page">
+    <header class="page-header">
+        <div>
+            <h1>Contratos</h1>
+            <p>Gerencie todos os contratos da empresa</p>
+        </div>
+        <button class="btn-primary">
+            <i class="fa-solid fa-plus"></i>
+            Novo Contrato
+        </button>
+    </header>
+    <section class="filters-bar">
+        <div class="search-box">
+            <i class="fa-solid fa-search"></i>
+            <input
+                type="text"
+                placeholder="Pesquisar contrato..."
+            >
+        </div>
+        <select>
+            <option>Status</option>
+        </select>
+        <select>
+            <option>Empresa</option>
+        </select>
+        <select>
+            <option>Tipo</option>
+        </select>
+        <button class="btn-secondary">
+            <i class="fa-solid fa-download"></i>
+            Exportar
+        </button>
+    </section>
+    <section class="table-card">
+        <table class="contracts-table">
+            <thead>
+                <tr>
+                    <th>Nº</th>
+                    <th>Empresa</th>
+                    <th>Categoria</th>
+                    <th>Responsável</th>
+                    <th>Valor</th>
+                    <th>Início</th>
+                    <th>Vencimento</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="contracts-body">
+            </tbody>
+        </table>
+    </section>
+</section>

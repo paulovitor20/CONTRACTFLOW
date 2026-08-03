@@ -1,0 +1,44 @@
+/* =====================================================
+   CONFIGURAÇÕES GLOBAIS
+===================================================== */
+
+@import url("./variables.css");
+@import url("./reset.css");
+@import url("./utilities.css");
+
+/* =====================================================
+   LAYOUT
+===================================================== */
+
+@import url("./layout.css");
+@import url("./sidebar.css");
+@import url("./navbar.css");
+
+/* =====================================================
+   COMPONENTES
+===================================================== */
+
+@import url("../components/button.css");
+@import url("../components/input.css");
+@import url("../components/card.css");
+@import url("../components/badge.css");
+@import url("../components/stat-card.css");
+@import url("../components/panel.css");
+@import url("../components/chart.css");
+@import url("../components/list.css");
+
+/* =====================================================
+   PÁGINAS
+===================================================== */
+@import url("../../../app/pages/dashboard/dashboard.css");
+@import url("../../../app/pages/contracts/list.css");
+@import url("../../../app/pages/companies/list.css");
+
+/* Futuras páginas */
+
+/*
+@import url("../../app/pages/contracts/contracts.css");
+@import url("../../app/pages/companies/companies.css");
+@import url("../../app/pages/users/users.css");
+@import url("../../app/pages/reports/reports.css");
+*/

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ContractFlow</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet" href="assets/css/components/app.css">
+
+</head>
+
+<body>
+
+    <div class="app">
+        <aside id="sidebar"></aside>
+        <div class="app-content">
+            <header id="navbar"></header>
+            <main id="page-content"></main>
+        </div>
+    </div>
+    <script src="app/core/Loader.js"></script>
+    <script src="app/core/Store.js"></script>
+    <script src="app/core/EventBus.js"></script>
+    <script src="app/core/LayoutManager.js"></script>
+    <script src="app/core/ModuleLoader.js"></script>
+    <script src="app/core/Router.js"></script>
+
+    <script src="app/components/sidebar/Sidebar.js"></script>
+    <script src="app/components/navbar/Navbar.js"></script>
+    <script src="app/components/card/StatCard.js"></script>
+
+    <script src="app/core/App.js"></script>
+    <script src="app/components/chart/DonutChart.js"></script>
+    <script src="app/components/chart/BarChart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app/components/list/ContractList.js"></script>
+    <script src="app/data/dashboardData.js"></script>
+</body>
+
+</html>

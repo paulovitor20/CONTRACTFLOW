@@ -1,0 +1,45 @@
+.fx-panel{
+
+    background:#FFF;
+
+    border-radius:22px;
+
+    padding:26px;
+
+    box-shadow:var(--shadow-sm);
+
+    display:flex;
+
+    flex-direction:column;
+
+    min-height:420px;
+
+}
+
+.fx-panel-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:24px;
+
+}
+
+.fx-panel-title{
+
+    font-size:20px;
+
+    font-weight:600;
+
+    color:#111827;
+
+}
+
+.fx-panel-body{
+
+    flex:1;
+
+}

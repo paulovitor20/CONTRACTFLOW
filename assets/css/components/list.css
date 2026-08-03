@@ -1,0 +1,97 @@
+.fx-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.fx-list-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:16px;
+
+    padding:14px 0;
+
+    border-bottom:1px solid #EEF2F7;
+
+}
+
+.fx-list-item:last-child{
+
+    border-bottom:none;
+
+}
+
+.fx-company{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.fx-company-logo{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:12px;
+
+    background:#F4F6FB;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-weight:700;
+
+    color:#4F46E5;
+
+    font-size:18px;
+
+}
+
+.fx-company-info strong{
+
+    display:block;
+
+    font-size:15px;
+
+}
+
+.fx-company-info small{
+
+    color:#8A94A6;
+
+}
+
+.fx-contract-date{
+
+    text-align:right;
+
+}
+
+.fx-contract-date strong{
+
+    display:block;
+
+}
+
+.fx-contract-date small{
+
+    color:#8A94A6;
+
+}

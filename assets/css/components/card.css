@@ -1,0 +1,21 @@
+.fx-card{
+
+    background:#FFF;
+
+    border-radius:20px;
+
+    padding:26px;
+
+    box-shadow:var(--shadow-sm);
+
+    transition:.25s;
+
+}
+
+.fx-card:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:var(--shadow-md);
+
+}

@@ -1,0 +1,138 @@
+.dashboard{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:32px;
+
+    width:100%;
+
+}
+
+.dashboard-header h1{
+
+    font-size:2rem;
+
+    font-weight:700;
+
+    color:var(--color-title);
+
+}
+
+.dashboard-header p{
+
+    margin-top:6px;
+
+    color:var(--color-text);
+
+}
+
+/* ==========================
+   CARDS SUPERIORES
+========================== */
+
+.dashboard-cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+    gap:24px;
+
+}
+
+/* ==========================
+   LINHAS
+========================== */
+
+.dashboard-row{
+
+    display:grid;
+
+    grid-template-columns:2fr 2.4fr 2fr;
+
+    gap:24px;
+
+}
+
+.fx-panel h3{
+
+    font-size:20px;
+
+    font-weight:600;
+
+    color:#111827;
+
+}
+
+.fx-panel{
+
+    min-height:430px;
+
+}
+
+.fx-chart{
+
+    height:320px;
+
+}
+/* ==========================
+   RESPONSIVO
+========================== */
+
+@media(max-width:1600px){
+
+.dashboard-cards{
+
+grid-template-columns:repeat(3,1fr);
+
+}
+
+}
+
+@media(max-width:1200px){
+
+.dashboard-row{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.dashboard-cards{
+
+grid-template-columns:1fr;
+
+}
+
+.dashboard{
+
+gap:20px;
+
+}
+
+}
+
+.dashboard-panels{
+
+    display:grid;
+
+    grid-template-columns:1.2fr 1.8fr 1.2fr;
+
+    gap:24px;
+
+}
+
+@media(max-width:1300px){
+
+.dashboard-panels{
+
+grid-template-columns:1fr;
+
+}
+
+}

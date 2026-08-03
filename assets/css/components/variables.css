@@ -1,0 +1,122 @@
+:root {
+
+   /* =====================================================
+       CORES
+    ====================================================== */
+
+   --color-primary: #4F46E5;
+   --color-primary-hover: #4338CA;
+
+   --color-success: #22C55E;
+   --color-warning: #F59E0B;
+   --color-danger: #EF4444;
+   --color-info: #3B82F6;
+
+   --color-sidebar: #071A35;
+
+   --color-background: #F6F8FC;
+
+   --color-surface: #FFFFFF;
+
+   --color-border: #E5E7EB;
+
+   --color-title: #111827;
+
+   --color-text: #6B7280;
+
+   /* =====================================================
+       BORDER RADIUS
+    ====================================================== */
+
+   --radius-sm: 8px;
+   --radius-md: 12px;
+   --radius-lg: 18px;
+   --radius-xl: 24px;
+
+   /* =====================================================
+       SHADOW
+    ====================================================== */
+
+   --shadow-sm: 0 2px 8px rgba(0, 0, 0, .05);
+
+   --shadow-md: 0 8px 20px rgba(0, 0, 0, .08);
+
+   --shadow-lg: 0 12px 40px rgba(0, 0, 0, .10);
+
+   /* =====================================================
+       FONTES
+    ====================================================== */
+
+   --font-family:
+      "Inter",
+      sans-serif;
+
+   --font-title: 32px;
+
+   --font-subtitle: 22px;
+
+   --font-body: 15px;
+
+   --font-small: 13px;
+
+   /* =====================================================
+       ESPAÇAMENTOS
+    ====================================================== */
+
+   --space-1: 4px;
+   --space-2: 8px;
+   --space-3: 12px;
+   --space-4: 16px;
+   --space-5: 20px;
+   --space-6: 24px;
+   --space-7: 32px;
+   --space-8: 40px;
+
+   /* =====================================================
+       TRANSIÇÃO
+    ====================================================== */
+
+   --transition: .25s ease;
+   /* =====================================================
+   LAYOUT
+===================================================== */
+
+   --sidebar-width: 280px;
+
+   --sidebar-width-collapse: 72px;
+
+   --navbar-height: 80px;
+
+   --content-max-width: 1920px;
+
+}
+:root{
+
+    /* Cores */
+
+    --primary:#4F46E5;
+    --primary-hover:#4338CA;
+
+    --success:#22C55E;
+    --warning:#F59E0B;
+    --danger:#EF4444;
+
+    --background:#F5F7FB;
+    --surface:#FFFFFF;
+
+    --text:#0F172A;
+    --muted:#64748B;
+
+    --border:#E5E7EB;
+
+    /* Radius */
+
+    --radius-sm:8px;
+    --radius-md:12px;
+    --radius-lg:20px;
+
+    /* Shadow */
+
+    --shadow-sm:0 10px 30px rgba(15,23,42,.06);
+
+}

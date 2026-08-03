@@ -1,0 +1,23 @@
+.companies-page {
+
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+
+}
+
+.companies-table {
+
+    width: 100%;
+    border-collapse: collapse;
+
+}
+
+.companies-table th,
+.companies-table td {
+
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid #ECECEC;
+
+}
