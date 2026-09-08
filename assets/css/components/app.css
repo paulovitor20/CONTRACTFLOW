@@ -26,6 +26,10 @@
 @import url("../components/panel.css");
 @import url("../components/chart.css");
 @import url("../components/list.css");
+@import url("../components/table.css");
+@import url("../components/dropdown.css");
+@import url("../../../app/components/modal/modal.css");
+
 
 /* =====================================================
    PÁGINAS

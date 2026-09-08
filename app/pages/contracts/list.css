@@ -1,91 +1,908 @@
-.contracts-page{
+/* ==========================================
+   PÁGINA
+========================================== */
 
-    display:flex;
+.contracts-page {
 
-    flex-direction:column;
+    display: flex;
 
-    gap:28px;
+    flex-direction: column;
 
-}
-
-.page-header{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    flex-wrap:wrap;
-
-    gap:20px;
+    gap: 24px;
 
 }
 
-.page-header h1{
 
-    font-size:38px;
+/* ==========================================
+   CABEÇALHO
+========================================== */
 
-}
+.contracts-header {
 
-.page-header p{
+    display: flex;
 
-    color:#6B7280;
+    justify-content: space-between;
 
-}
+    align-items: flex-start;
 
-.filters-bar{
-
-    background:#FFF;
-
-    border-radius:20px;
-
-    padding:20px;
-
-    display:flex;
-
-    gap:18px;
-
-    flex-wrap:wrap;
-
-    box-shadow:var(--shadow-sm);
+    gap: 20px;
 
 }
 
-.search-box{
 
-    flex:1;
+.contracts-header h1 {
 
-    min-width:260px;
+    margin: 0;
 
-    display:flex;
+    font-size: 36px;
 
-    align-items:center;
+    font-weight: 700;
 
-    gap:12px;
-
-}
-
-.search-box input{
-
-    border:none;
-
-    outline:none;
-
-    width:100%;
-
-    font-size:15px;
+    color: var(--text);
 
 }
 
-.table-card{
 
-    background:#FFF;
+.contracts-header p {
 
-    border-radius:20px;
+    margin-top: 4px;
 
-    overflow:hidden;
+    color: var(--muted);
 
-    box-shadow:var(--shadow-sm);
+    font-size: 14px;
+
+}
+
+
+.contracts-breadcrumb {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 12px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+}
+
+
+.contracts-breadcrumb i {
+
+    font-size: 11px;
+
+}
+
+
+.contracts-breadcrumb strong {
+
+    color: var(--text);
+
+}
+
+
+/* ==========================================
+   FILTROS
+========================================== */
+
+.contracts-filters {
+
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 16px;
+
+    padding: 18px 24px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow-sm);
+
+}
+
+
+.contract-search {
+
+    flex: 1;
+
+    min-width: 260px;
+
+    height: 44px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 0 14px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    background: #fff;
+
+}
+
+
+.contract-search i {
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+}
+
+
+.contract-search input {
+
+    width: 100%;
+
+    border: none;
+
+    outline: none;
+
+    color: var(--text);
+
+    background: transparent;
+
+    font-size: 14px;
+
+}
+
+
+.contract-search input::placeholder {
+
+    color: #94A3B8;
+
+}
+
+
+/* ==========================================
+   CAMPOS
+========================================== */
+
+.filter-field {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+    min-width: 150px;
+
+}
+
+
+.filter-field label {
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    color: var(--muted);
+
+}
+
+
+.filter-field select {
+
+    height: 44px;
+
+    padding: 0 35px 0 12px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    background: #fff;
+
+    color: var(--text);
+
+    outline: none;
+
+    cursor: pointer;
+
+}
+
+
+.btn-filter-more,
+.btn-export {
+
+    height: 44px;
+
+    padding: 0 16px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    cursor: pointer;
+
+}
+
+
+.btn-filter-more {
+
+    border: 1px solid var(--border);
+
+    background: #fff;
+
+    color: #334155;
+
+}
+
+
+.btn-export {
+
+    border: 1px solid var(--border);
+
+    background: #F8FAFC;
+
+    color: #1E293B;
+
+}
+
+
+/* ==========================================
+   CARDS DE INDICADORES
+========================================== */
+
+.contract-stats {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 18px;
+
+}
+
+
+.contract-stat {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    min-height: 112px;
+
+    padding: 20px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow-sm);
+
+}
+
+
+.stat-icon {
+
+    width: 52px;
+
+    height: 52px;
+
+    min-width: 52px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 19px;
+
+}
+
+
+.stat-icon-blue {
+
+    background: #EEF2FF;
+
+    color: #4F46E5;
+
+}
+
+
+.stat-icon-green {
+
+    background: #DCFCE7;
+
+    color: #16A34A;
+
+}
+
+
+.stat-icon-yellow {
+
+    background: #FEF3C7;
+
+    color: #D97706;
+
+}
+
+
+.stat-icon-red {
+
+    background: #FEE2E2;
+
+    color: #DC2626;
+
+}
+
+
+.stat-content {
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+
+}
+
+
+.stat-content span {
+
+    font-size: 13px;
+
+    color: var(--muted);
+
+}
+
+
+.stat-content strong {
+
+    margin-top: 4px;
+
+    font-size: 28px;
+
+    line-height: 1.1;
+
+    color: var(--text);
+
+}
+
+
+.stat-content small {
+
+    margin-top: 7px;
+
+    font-size: 11px;
+
+}
+
+
+.stat-positive {
+
+    color: #16A34A;
+
+}
+
+
+.stat-warning {
+
+    color: #D97706;
+
+}
+
+
+.stat-danger {
+
+    color: #DC2626;
+
+}
+
+
+/* ==========================================
+   PROGRESSO
+========================================== */
+
+.stat-progress {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 8px;
+
+}
+
+
+.progress-track {
+
+    width: 110px;
+
+    height: 7px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    background: #DCFCE7;
+
+}
+
+
+.progress-value {
+
+    height: 100%;
+
+    border-radius: 20px;
+
+    background: #34D399;
+
+}
+
+
+/* ==========================================
+   TABELA
+========================================== */
+
+.contracts-table-card {
+
+    overflow: hidden;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow-sm);
+
+}
+
+
+.contracts-table-wrapper {
+
+    width: 100%;
+
+    overflow-x: auto;
+
+}
+
+
+.contracts-table {
+
+    width: 100%;
+
+    min-width: 1050px;
+
+    border-collapse: collapse;
+
+}
+
+
+.contracts-table thead {
+
+    background: #F8FAFC;
+
+}
+
+
+.contracts-table th {
+
+    padding: 15px 12px;
+
+    text-align: left;
+
+    white-space: nowrap;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    color: #334155;
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+
+.contracts-table td {
+
+    padding: 13px 12px;
+
+    font-size: 13px;
+
+    color: #334155;
+
+    white-space: nowrap;
+
+    border-bottom: 1px solid #F1F5F9;
+
+}
+
+
+.contracts-table tbody tr {
+
+    transition: background .15s ease;
+
+}
+
+
+.contracts-table tbody tr:hover {
+
+    background: #F8FAFC;
+
+}
+
+
+.contracts-table tbody tr:last-child td {
+
+    border-bottom: none;
+
+}
+
+
+/* ==========================================
+   EMPRESA
+========================================== */
+
+.company-cell {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+
+.company-avatar {
+
+    width: 32px;
+
+    height: 32px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: #EEF2FF;
+
+    color: #4F46E5;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+}
+
+
+.company-name {
+
+    font-weight: 600;
+
+    color: var(--text);
+
+}
+
+
+/* ==========================================
+   STATUS
+========================================== */
+
+.contract-status {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+}
+
+
+.status-active {
+
+    background: #DCFCE7;
+
+    color: #15803D;
+
+}
+
+
+.status-expiring {
+
+    background: #FEF3C7;
+
+    color: #B45309;
+
+}
+
+
+.status-expired {
+
+    background: #FEE2E2;
+
+    color: #B91C1C;
+
+}
+
+
+/* ==========================================
+   AÇÕES
+========================================== */
+
+.contract-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+}
+
+
+.action-btn {
+
+    width: 32px;
+
+    height: 32px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 1px solid var(--border);
+
+    border-radius: 8px;
+
+    background: #fff;
+
+    color: #475569;
+
+    cursor: pointer;
+
+    transition: .15s;
+
+}
+
+
+.action-btn:hover {
+
+    background: #F1F5F9;
+
+    color: #4F46E5;
+
+}
+
+
+/* ==========================================
+   RODAPÉ
+========================================== */
+
+.contracts-table-footer {
+
+    display: grid;
+
+    grid-template-columns: 1fr auto 1fr;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 16px;
+
+    border-top: 1px solid var(--border);
+
+}
+
+
+.contracts-table-footer > span {
+
+    font-size: 12px;
+
+    color: var(--muted);
+
+}
+
+
+/* ==========================================
+   PAGINAÇÃO
+========================================== */
+
+.pagination {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+}
+
+
+.pagination-btn {
+
+    width: 34px;
+
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 1px solid var(--border);
+
+    border-radius: 8px;
+
+    background: #fff;
+
+    color: #334155;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+}
+
+
+.pagination-btn:hover {
+
+    background: #F8FAFC;
+
+}
+
+
+.pagination-btn.active {
+
+    border-color: #4F46E5;
+
+    background: #4F46E5;
+
+    color: #fff;
+
+}
+
+
+.pagination-dots {
+
+    padding: 0 4px;
+
+    color: var(--muted);
+
+}
+
+
+/* ==========================================
+   ITENS POR PÁGINA
+========================================== */
+
+.page-size {
+
+    justify-self: end;
+
+    height: 34px;
+
+    padding: 0 12px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 8px;
+
+    background: #fff;
+
+    color: #334155;
+
+    font-size: 12px;
+
+}
+
+
+/* ==========================================
+   RESPONSIVO
+========================================== */
+
+@media (max-width: 1400px) {
+
+    .contract-stats {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+}
+
+
+@media (max-width: 1000px) {
+
+    .contracts-filters {
+
+        flex-wrap: wrap;
+
+    }
+
+    .contract-search {
+
+        flex-basis: 100%;
+
+    }
+
+    .contracts-table-footer {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .pagination {
+
+        justify-content: center;
+
+    }
+
+    .page-size {
+
+        justify-self: start;
+
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .contracts-header {
+
+        flex-direction: column;
+
+    }
+
+    .contract-stats {
+
+        grid-template-columns: 1fr;
+
+    }
 
 }

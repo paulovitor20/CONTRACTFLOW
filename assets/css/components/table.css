@@ -1,0 +1,84 @@
+/* ==========================================
+   UI TABLE
+========================================== */
+
+.ui-table-wrapper {
+
+    width: 100%;
+
+    overflow-x: auto;
+
+}
+
+
+.ui-table {
+
+    width: 100%;
+
+    min-width: 1050px;
+
+    border-collapse: collapse;
+
+}
+
+
+.ui-table thead {
+
+    background: #F8FAFC;
+
+}
+
+
+.ui-table th {
+
+    padding: 15px 12px;
+
+    text-align: left;
+
+    white-space: nowrap;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    color: #334155;
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+
+.ui-table td {
+
+    padding: 13px 12px;
+
+    font-size: 13px;
+
+    color: #334155;
+
+    white-space: nowrap;
+
+    border-bottom: 1px solid #F1F5F9;
+
+}
+
+
+.ui-table tbody tr {
+
+    transition: background .15s ease;
+
+}
+
+
+.ui-table tbody tr:hover {
+
+    background: #F8FAFC;
+
+}
+
+
+.ui-table tbody tr:last-child td {
+
+    border-bottom: none;
+
+}

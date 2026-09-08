@@ -1,53 +1,491 @@
 <section class="contracts-page">
-    <header class="page-header">
+
+    <!-- ==========================================
+         CABEÇALHO
+    =========================================== -->
+
+    <header class="contracts-header">
+
         <div>
+
             <h1>Contratos</h1>
-            <p>Gerencie todos os contratos da empresa</p>
+
+            <p>
+                Gerencie todos os contratos da empresa
+            </p>
+
         </div>
-        <button class="btn-primary">
-            <i class="fa-solid fa-plus"></i>
-            Novo Contrato
-        </button>
+
+
+        <div class="contracts-breadcrumb">
+
+            <i class="fa-solid fa-house"></i>
+
+            <span>Dashboard</span>
+
+            <i class="fa-solid fa-chevron-right"></i>
+
+            <strong>Contratos</strong>
+
+        </div>
+
     </header>
-    <section class="filters-bar">
-        <div class="search-box">
-            <i class="fa-solid fa-search"></i>
+
+
+    <!-- ==========================================
+         FILTROS
+    =========================================== -->
+
+    <section class="contracts-filters">
+
+        <div class="contract-search">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
             <input
                 type="text"
+                id="contract-search"
                 placeholder="Pesquisar contrato..."
+                autocomplete="off"
             >
+
         </div>
-        <select>
-            <option>Status</option>
-        </select>
-        <select>
-            <option>Empresa</option>
-        </select>
-        <select>
-            <option>Tipo</option>
-        </select>
-        <button class="btn-secondary">
-            <i class="fa-solid fa-download"></i>
-            Exportar
+
+
+        <div class="filter-field">
+
+            <label for="filter-status">
+                Status
+            </label>
+
+            <select id="filter-status">
+
+                <option value="">
+                    Todos
+                </option>
+
+                <option value="ativo">
+                    Ativo
+                </option>
+
+                <option value="vencendo">
+                    Vencendo
+                </option>
+
+                <option value="vencido">
+                    Vencido
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="filter-field">
+
+            <label for="filter-company">
+                Empresa
+            </label>
+
+            <select id="filter-company">
+
+                <option value="">
+                    Todas
+                </option>
+
+                <option value="Carvalho Transportes">
+                    Carvalho Transportes
+                </option>
+
+                <option value="Vivo">
+                    Vivo
+                </option>
+
+                <option value="AWS">
+                    AWS
+                </option>
+
+                <option value="Google">
+                    Google
+                </option>
+
+                <option value="Sicredi">
+                    Sicredi
+                </option>
+
+                <option value="Alelo">
+                    Alelo
+                </option>
+
+                <option value="Fretebras">
+                    Fretebras
+                </option>
+
+                <option value="Banco do Brasil">
+                    Banco do Brasil
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="filter-field">
+
+            <label for="filter-type">
+                Tipo
+            </label>
+
+            <select id="filter-type">
+
+                <option value="">
+                    Todos
+                </option>
+
+                <option value="Transporte">
+                    Transporte
+                </option>
+
+                <option value="Telefonia">
+                    Telefonia
+                </option>
+
+                <option value="Cloud">
+                    Cloud
+                </option>
+
+                <option value="Serviços">
+                    Serviços
+                </option>
+
+                <option value="Financeiro">
+                    Financeiro
+                </option>
+
+                <option value="Benefícios">
+                    Benefícios
+                </option>
+
+                <option value="Logística">
+                    Logística
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="btn-filter-more"
+            id="btn-more-filters"
+        >
+
+            <i class="fa-solid fa-filter"></i>
+
+            Mais filtros
+
         </button>
+
+
+        <button
+            type="button"
+            class="btn-export"
+            id="btn-export"
+        >
+
+            <i class="fa-solid fa-download"></i>
+
+            Exportar
+
+        </button>
+
     </section>
-    <section class="table-card">
-        <table class="contracts-table">
-            <thead>
-                <tr>
-                    <th>Nº</th>
-                    <th>Empresa</th>
-                    <th>Categoria</th>
-                    <th>Responsável</th>
-                    <th>Valor</th>
-                    <th>Início</th>
-                    <th>Vencimento</th>
-                    <th>Status</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody id="contracts-body">
-            </tbody>
-        </table>
+
+
+    <!-- ==========================================
+         INDICADORES
+    =========================================== -->
+
+    <section class="contract-stats">
+
+
+        <!-- TOTAL -->
+
+        <article class="contract-stat">
+
+            <div class="stat-icon stat-icon-blue">
+
+                <i class="fa-solid fa-file-contract"></i>
+
+            </div>
+
+
+            <div class="stat-content">
+
+                <span>
+                    Total de Contratos
+                </span>
+
+                <strong id="stat-total">
+                    128
+                </strong>
+
+                <small class="stat-positive">
+
+                    <i class="fa-solid fa-arrow-up"></i>
+
+                    12% em relação ao mês anterior
+
+                </small>
+
+            </div>
+
+        </article>
+
+
+        <!-- ATIVOS -->
+
+        <article class="contract-stat">
+
+            <div class="stat-icon stat-icon-green">
+
+                <i class="fa-solid fa-check"></i>
+
+            </div>
+
+
+            <div class="stat-content">
+
+                <span>
+                    Contratos Ativos
+                </span>
+
+                <strong id="stat-active">
+                    98
+                </strong>
+
+
+                <div class="stat-progress">
+
+                    <div class="progress-track">
+
+                        <div
+                            class="progress-value"
+                            style="width: 77%;"
+                        ></div>
+
+                    </div>
+
+                    <small>
+                        77%
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- VENCENDO -->
+
+        <article class="contract-stat">
+
+            <div class="stat-icon stat-icon-yellow">
+
+                <i class="fa-solid fa-clock"></i>
+
+            </div>
+
+
+            <div class="stat-content">
+
+                <span>
+                    Vencendo em 30 dias
+                </span>
+
+                <strong id="stat-expiring">
+                    7
+                </strong>
+
+                <small class="stat-warning">
+                    Requer atenção
+                </small>
+
+            </div>
+
+        </article>
+
+
+        <!-- VENCIDOS -->
+
+        <article class="contract-stat">
+
+            <div class="stat-icon stat-icon-red">
+
+                <i class="fa-solid fa-exclamation"></i>
+
+            </div>
+
+
+            <div class="stat-content">
+
+                <span>
+                    Contratos Vencidos
+                </span>
+
+                <strong id="stat-expired">
+                    12
+                </strong>
+
+                <small class="stat-danger">
+                    Ação necessária
+                </small>
+
+            </div>
+
+        </article>
+
     </section>
+
+
+    <!-- ==========================================
+         TABELA
+    =========================================== -->
+
+    <section class="contracts-table-card">
+
+        <!--
+            A tabela será criada pelo componente UITable.
+        -->
+
+        <div id="contracts-table"></div>
+
+
+        <!-- ======================================
+             RODAPÉ DA TABELA
+        ======================================= -->
+
+        <div class="contracts-table-footer">
+
+
+            <span id="table-info">
+
+                Mostrando 1 a 8 de 128 contratos
+
+            </span>
+
+
+            <!-- PAGINAÇÃO -->
+
+            <div class="pagination">
+
+
+                <button
+                    type="button"
+                    class="pagination-btn"
+                    title="Página anterior"
+                >
+
+                    <i class="fa-solid fa-angle-left"></i>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="pagination-btn active"
+                >
+                    1
+                </button>
+
+
+                <button
+                    type="button"
+                    class="pagination-btn"
+                >
+                    2
+                </button>
+
+
+                <button
+                    type="button"
+                    class="pagination-btn"
+                >
+                    3
+                </button>
+
+
+                <button
+                    type="button"
+                    class="pagination-btn"
+                >
+                    4
+                </button>
+
+
+                <button
+                    type="button"
+                    class="pagination-btn"
+                >
+                    5
+                </button>
+
+
+                <span class="pagination-dots">
+                    ...
+                </span>
+
+
+                <button
+                    type="button"
+                    class="pagination-btn"
+                >
+                    16
+                </button>
+
+
+                <button
+                    type="button"
+                    class="pagination-btn"
+                    title="Próxima página"
+                >
+
+                    <i class="fa-solid fa-angle-right"></i>
+
+                </button>
+
+            </div>
+
+
+            <!-- QUANTIDADE POR PÁGINA -->
+
+            <select
+                class="page-size"
+                id="page-size"
+            >
+
+                <option value="8">
+                    8 por página
+                </option>
+
+                <option value="15">
+                    15 por página
+                </option>
+
+                <option value="25">
+                    25 por página
+                </option>
+
+                <option value="50">
+                    50 por página
+                </option>
+
+            </select>
+
+        </div>
+
+    </section>
+
 </section>

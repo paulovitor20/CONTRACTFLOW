@@ -1,0 +1,225 @@
+.ui-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 1000;
+
+}
+
+
+.ui-modal.open {
+
+    display: flex;
+
+}
+
+
+.ui-modal-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background: rgba(15, 23, 42, .45);
+
+    backdrop-filter: blur(2px);
+
+}
+
+
+.ui-modal-container {
+
+    position: relative;
+
+    width: min(680px, calc(100% - 32px));
+
+    max-height: calc(100vh - 48px);
+
+    display: flex;
+
+    flex-direction: column;
+
+    background: var(--surface);
+
+    border-radius: var(--radius-lg);
+
+    box-shadow:
+        0 24px 60px rgba(15, 23, 42, .20);
+
+    overflow: hidden;
+
+    animation: modalOpen .18s ease;
+
+}
+
+
+@keyframes modalOpen {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(10px) scale(.98);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0) scale(1);
+
+    }
+
+}
+
+
+.ui-modal-header {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 22px 24px;
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+
+.ui-modal-title {
+
+    margin: 0;
+
+    font-size: 19px;
+
+    font-weight: 700;
+
+    color: var(--text);
+
+}
+
+
+.ui-modal-subtitle {
+
+    margin: 5px 0 0;
+
+    font-size: 13px;
+
+    color: var(--muted);
+
+}
+
+
+.ui-modal-close {
+
+    width: 34px;
+
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 0;
+
+    background: transparent;
+
+    border-radius: 8px;
+
+    color: var(--muted);
+
+    cursor: pointer;
+
+    transition: .2s;
+
+}
+
+
+.ui-modal-close:hover {
+
+    background: #F1F5F9;
+
+    color: var(--text);
+
+}
+
+
+.ui-modal-body {
+
+    padding: 24px;
+
+    overflow-y: auto;
+
+}
+
+
+.ui-modal-footer {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    padding: 16px 24px;
+
+    border-top: 1px solid var(--border);
+
+}
+
+
+.ui-modal-footer:empty {
+
+    display: none;
+
+}
+
+
+body.modal-open {
+
+    overflow: hidden;
+
+}
+
+
+@media (max-width: 600px) {
+
+    .ui-modal-container {
+
+        width: calc(100% - 20px);
+
+        max-height: calc(100vh - 20px);
+
+        border-radius: 14px;
+
+    }
+
+
+    .ui-modal-header,
+    .ui-modal-body,
+    .ui-modal-footer {
+
+        padding-left: 18px;
+
+        padding-right: 18px;
+
+    }
+
+}
