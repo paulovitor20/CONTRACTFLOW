@@ -95,90 +95,74 @@ window.ContractsPage = class ContractsPage {
 
     static init() {
 
-    console.log("Tela Contratos carregada.");
+        console.log("Tela Contratos carregada.");
 
-    this.renderTable();
-
-
-    const newContractButton =
-        document.querySelector(
-            ".contracts-page .btn-primary"
-        );
+        this.renderTable();
 
 
-    newContractButton?.addEventListener(
-        "click",
-        () => {
+        const newContractButton =
+            document.querySelector("#btn-new-contract");
+
+        newContractButton?.addEventListener("click", () => {
 
             UIModal.open({
 
                 title: "Novo Contrato",
 
-                subtitle:
-                    "Cadastre um novo contrato no sistema.",
+                subtitle: "Cadastre um novo contrato no sistema.",
 
                 content: `
+            <div style="
+                padding:20px 0;
+                text-align:center;
+            ">
 
-                    <div style="
-                        padding:20px 0;
-                        text-align:center;
-                    ">
+                <i
+                    class="fa-solid fa-file-contract"
+                    style="
+                        font-size:40px;
+                        color:var(--primary);
+                        margin-bottom:15px;
+                    "
+                ></i>
 
-                        <i
-                            class="fa-solid fa-file-contract"
-                            style="
-                                font-size:40px;
-                                color:var(--primary);
-                                margin-bottom:15px;
-                            "
-                        ></i>
+                <h3>
+                    Formulário de contrato
+                </h3>
 
+                <p style="
+                    margin-top:8px;
+                    color:var(--muted);
+                ">
+                    O formulário completo
+                    será implementado no próximo passo.
+                </p>
 
-                        <h3>
-                            Formulário de contrato
-                        </h3>
-
-
-                        <p style="
-                            margin-top:8px;
-                            color:var(--muted);
-                        ">
-
-                            O formulário completo
-                            será implementado no próximo passo.
-
-                        </p>
-
-                    </div>
-
-                `,
+            </div>
+        `,
 
                 footer: `
+            <button
+                type="button"
+                class="btn-secondary"
+                onclick="UIModal.close()"
+            >
+                Cancelar
+            </button>
 
-                    <button
-                        type="button"
-                        class="btn-secondary"
-                        onclick="UIModal.close()"
-                    >
-                        Cancelar
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="btn-primary"
-                    >
-                        Continuar
-                    </button>
-
-                `
+            <button
+                type="button"
+                class="btn-primary"
+            >
+                Continuar
+            </button>
+        `
 
             });
 
-        }
-    );
+        });
 
-}
+    }
 
 
     static renderTable(data = this.contracts) {
