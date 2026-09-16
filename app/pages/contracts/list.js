@@ -98,8 +98,6 @@ window.ContractsPage = class ContractsPage {
         console.log("Tela Contratos carregada.");
 
         this.renderTable();
-
-
         const newContractButton =
             document.querySelector("#btn-new-contract");
 
