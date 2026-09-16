@@ -906,3 +906,188 @@
     }
 
 }
+/* =========================================
+   FORMULÁRIO DE CONTRATO
+========================================= */
+
+.contract-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+}
+
+.form-section-title > i {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #EEF2FF;
+    color: var(--primary);
+    font-size: 15px;
+}
+
+.form-section-title div {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.form-section-title strong {
+    font-size: 14px;
+    color: var(--text);
+}
+
+.form-section-title span {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.form-group-wide {
+    grid-column: span 1;
+}
+
+.form-group label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #334155;
+}
+
+.form-group label span {
+    color: var(--danger);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    border-radius: 9px;
+    color: var(--text);
+    font-size: 13px;
+    outline: none;
+    transition: .2s;
+}
+
+.form-group input,
+.form-group select {
+    height: 42px;
+    padding: 0 12px;
+}
+
+.form-group textarea {
+    padding: 11px 12px;
+    resize: vertical;
+    min-height: 95px;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #94A3B8;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, .08);
+}
+
+.input-money {
+    position: relative;
+}
+
+.input-money span {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+}
+
+.input-money input {
+    padding-left: 38px;
+}
+
+@media (max-width: 600px) {
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group-wide {
+        grid-column: span 1;
+    }
+
+}
+/* =========================================
+   EMPRESA — SELECT + NOVA EMPRESA
+========================================= */
+
+.company-select-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.company-select-wrapper select {
+    flex: 1;
+}
+
+.btn-new-company {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--border);
+    border-radius: 9px;
+
+    background: var(--surface);
+    color: var(--primary);
+
+    cursor: pointer;
+    transition: .2s;
+}
+
+.btn-new-company:hover {
+    background: #EEF2FF;
+    border-color: var(--primary);
+}
+
+.btn-new-company i {
+    font-size: 13px;
+}

@@ -98,8 +98,15 @@ window.ContractsPage = class ContractsPage {
         console.log("Tela Contratos carregada.");
 
         this.renderTable();
+
+
+        /* =====================================================
+           NOVO CONTRATO
+        ===================================================== */
+
         const newContractButton =
             document.querySelector("#btn-new-contract");
+
 
         newContractButton?.addEventListener("click", () => {
 
@@ -107,67 +114,804 @@ window.ContractsPage = class ContractsPage {
 
                 title: "Novo Contrato",
 
-                subtitle: "Cadastre um novo contrato no sistema.",
+                subtitle:
+                    "Preencha os dados do contrato para realizar o cadastro.",
+
 
                 content: `
-            <div style="
-                padding:20px 0;
-                text-align:center;
-            ">
 
-                <i
-                    class="fa-solid fa-file-contract"
-                    style="
-                        font-size:40px;
-                        color:var(--primary);
-                        margin-bottom:15px;
-                    "
-                ></i>
+                    <form
+                        id="contract-form"
+                        class="contract-form"
+                    >
 
-                <h3>
-                    Formulário de contrato
-                </h3>
 
-                <p style="
-                    margin-top:8px;
-                    color:var(--muted);
-                ">
-                    O formulário completo
-                    será implementado no próximo passo.
-                </p>
+                        <!-- =====================================
+                             INFORMAÇÕES DO CONTRATO
+                        ====================================== -->
 
-            </div>
-        `,
+                        <div class="form-section">
+
+                            <div class="form-section-title">
+
+                                <i class="fa-solid fa-file-contract"></i>
+
+                                <div>
+
+                                    <strong>
+                                        Informações do contrato
+                                    </strong>
+
+                                    <span>
+                                        Dados principais do contrato
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-grid">
+
+
+                                <!-- Nº CONTRATO -->
+
+                                <div class="form-group">
+
+                                    <label for="contract-number">
+                                        Nº do contrato
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="contract-number"
+                                        placeholder="Ex.: CT-009"
+                                    >
+
+                                </div>
+
+
+                                <!-- EMPRESA -->
+
+                                <div class="form-group">
+
+                                    <label for="contract-company">
+
+                                        Empresa
+
+                                        <span>*</span>
+
+                                    </label>
+
+
+                                    <div class="company-select-wrapper">
+
+
+                                        <select
+                                            id="contract-company"
+                                            required
+                                        >
+
+                                            <option value="">
+                                                Selecione a empresa
+                                            </option>
+
+                                            <option value="Carvalho Transportes">
+                                                Carvalho Transportes
+                                            </option>
+
+                                            <option value="Vivo">
+                                                Vivo
+                                            </option>
+
+                                            <option value="AWS">
+                                                AWS
+                                            </option>
+
+                                            <option value="Google">
+                                                Google
+                                            </option>
+
+                                            <option value="Sicredi">
+                                                Sicredi
+                                            </option>
+
+                                            <option value="Alelo">
+                                                Alelo
+                                            </option>
+
+                                            <option value="Fretebras">
+                                                Fretebras
+                                            </option>
+
+                                            <option value="Banco do Brasil">
+                                                Banco do Brasil
+                                            </option>
+
+                                        </select>
+
+
+                                        <button
+                                            type="button"
+                                            class="btn-new-company"
+                                            id="btn-new-company"
+                                            title="Cadastrar nova empresa"
+                                        >
+
+                                            <i class="fa-solid fa-plus"></i>
+
+                                        </button>
+
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- CATEGORIA -->
+
+                                <div class="form-group">
+
+                                    <label for="contract-category">
+
+                                        Categoria
+
+                                        <span>*</span>
+
+                                    </label>
+
+
+                                    <select
+                                        id="contract-category"
+                                        required
+                                    >
+
+                                        <option value="">
+                                            Selecione
+                                        </option>
+
+                                        <option>
+                                            Transporte
+                                        </option>
+
+                                        <option>
+                                            Telefonia
+                                        </option>
+
+                                        <option>
+                                            Cloud
+                                        </option>
+
+                                        <option>
+                                            Serviços
+                                        </option>
+
+                                        <option>
+                                            Financeiro
+                                        </option>
+
+                                        <option>
+                                            Benefícios
+                                        </option>
+
+                                        <option>
+                                            Logística
+                                        </option>
+
+                                        <option>
+                                            Seguro
+                                        </option>
+
+                                        <option>
+                                            Aluguel
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- RESPONSÁVEL -->
+
+                                <div class="form-group">
+
+                                    <label for="contract-responsible">
+
+                                        Responsável
+
+                                        <span>*</span>
+
+                                    </label>
+
+
+                                    <input
+                                        type="text"
+                                        id="contract-responsible"
+                                        placeholder="Nome do responsável"
+                                        required
+                                    >
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- =====================================
+                             VIGÊNCIA E VALORES
+                        ====================================== -->
+
+                        <div class="form-section">
+
+
+                            <div class="form-section-title">
+
+                                <i class="fa-solid fa-calendar-days"></i>
+
+                                <div>
+
+                                    <strong>
+                                        Vigência e valores
+                                    </strong>
+
+                                    <span>
+                                        Período e informações financeiras
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-grid">
+
+
+                                <!-- VALOR -->
+
+                                <div class="form-group">
+
+                                    <label for="contract-value">
+
+                                        Valor
+
+                                        <span>*</span>
+
+                                    </label>
+
+
+                                    <div class="input-money">
+
+                                        <span>
+                                            R$
+                                        </span>
+
+
+                                        <input
+                                            type="text"
+                                            id="contract-value"
+                                            placeholder="0,00"
+                                            required
+                                        >
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- DATA INÍCIO -->
+
+                                <div class="form-group">
+
+                                    <label for="contract-start">
+
+                                        Data de início
+
+                                        <span>*</span>
+
+                                    </label>
+
+
+                                    <input
+                                        type="date"
+                                        id="contract-start"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <!-- DATA VENCIMENTO -->
+
+                                <div class="form-group">
+
+                                    <label for="contract-end">
+
+                                        Data de vencimento
+
+                                        <span>*</span>
+
+                                    </label>
+
+
+                                    <input
+                                        type="date"
+                                        id="contract-end"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <!-- STATUS -->
+
+                                <div class="form-group">
+
+                                    <label for="contract-status">
+                                        Status
+                                    </label>
+
+
+                                    <select id="contract-status">
+
+                                        <option value="ativo">
+                                            Ativo
+                                        </option>
+
+                                        <option value="vencendo">
+                                            Vencendo
+                                        </option>
+
+                                        <option value="vencido">
+                                            Vencido
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- =====================================
+                             OBSERVAÇÕES
+                        ====================================== -->
+
+                        <div class="form-section">
+
+
+                            <div class="form-section-title">
+
+                                <i class="fa-solid fa-align-left"></i>
+
+                                <div>
+
+                                    <strong>
+                                        Observações
+                                    </strong>
+
+                                    <span>
+                                        Informações adicionais
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="contract-notes">
+                                    Observações
+                                </label>
+
+
+                                <textarea
+                                    id="contract-notes"
+                                    rows="4"
+                                    placeholder="Digite observações sobre este contrato..."
+                                ></textarea>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </form>
+
+                `,
+
 
                 footer: `
-            <button
-                type="button"
-                class="btn-secondary"
-                onclick="UIModal.close()"
-            >
-                Cancelar
-            </button>
 
-            <button
-                type="button"
-                class="btn-primary"
-            >
-                Continuar
-            </button>
-        `
+                    <button
+                        type="button"
+                        class="fx-btn fx-btn-secondary"
+                        onclick="UIModal.close()"
+                    >
+
+                        Cancelar
+
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        form="contract-form"
+                        class="fx-btn fx-btn-primary"
+                    >
+
+                        <i class="fa-solid fa-check"></i>
+
+                        Cadastrar contrato
+
+                    </button>
+
+                `
 
             });
+
+        });
+
+        /* =====================================================
+        NOVA EMPRESA
+        ===================================================== */
+
+        document.addEventListener("click", (event) => {
+
+            const button =
+                event.target.closest("#btn-new-company");
+
+
+            if (!button) {
+                return;
+            }
+
+
+            UIModal.open({
+
+                title: "Nova Empresa",
+
+                subtitle:
+                    "Cadastre uma nova empresa para utilizar no contrato.",
+
+
+                content: `
+
+                    <form
+                        id="company-form"
+                        class="company-form"
+                    >
+
+                        <div class="form-section">
+
+
+                            <div class="form-section-title">
+
+                                <i class="fa-solid fa-building"></i>
+
+                                <div>
+
+                                    <strong>
+                                        Dados da empresa
+                                    </strong>
+
+                                    <span>
+                                        Informações cadastrais
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-grid">
+
+
+                                <!-- RAZÃO SOCIAL -->
+
+                                <div class="form-group">
+
+                                    <label for="company-legal-name">
+
+                                        Razão Social
+
+                                        <span>*</span>
+
+                                    </label>
+
+
+                                    <input
+                                        type="text"
+                                        id="company-legal-name"
+                                        placeholder="Digite a razão social"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <!-- NOME FANTASIA -->
+
+                                <div class="form-group">
+
+                                    <label for="company-trade-name">
+
+                                        Nome Fantasia
+
+                                    </label>
+
+
+                                    <input
+                                        type="text"
+                                        id="company-trade-name"
+                                        placeholder="Digite o nome fantasia"
+                                    >
+
+                                </div>
+
+
+                                <!-- CNPJ -->
+
+                                <div class="form-group">
+
+                                    <label for="company-cnpj">
+
+                                        CNPJ
+
+                                        <span>*</span>
+
+                                    </label>
+
+
+                                    <input
+                                        type="text"
+                                        id="company-cnpj"
+                                        placeholder="00.000.000/0000-00"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <!-- CONTATO -->
+
+                                <div class="form-group">
+
+                                    <label for="company-contact">
+
+                                        Contato
+
+                                    </label>
+
+
+                                    <input
+                                        type="text"
+                                        id="company-contact"
+                                        placeholder="Nome do contato"
+                                    >
+
+                                </div>
+
+
+                                <!-- TELEFONE -->
+
+                                <div class="form-group">
+
+                                    <label for="company-phone">
+
+                                        Telefone
+
+                                    </label>
+
+
+                                    <input
+                                        type="text"
+                                        id="company-phone"
+                                        placeholder="(00) 00000-0000"
+                                    >
+
+                                </div>
+
+
+                                <!-- E-MAIL -->
+
+                                <div class="form-group">
+
+                                    <label for="company-email">
+
+                                        E-mail
+
+                                    </label>
+
+
+                                    <input
+                                        type="email"
+                                        id="company-email"
+                                        placeholder="empresa@email.com"
+                                    >
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                `,
+
+
+                footer: `
+
+                    <button
+                        type="button"
+                        class="fx-btn fx-btn-secondary"
+                        onclick="UIModal.close()"
+                    >
+
+                        Cancelar
+
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        form="company-form"
+                        class="fx-btn fx-btn-primary"
+                    >
+
+                        <i class="fa-solid fa-check"></i>
+
+                        Cadastrar empresa
+
+                    </button>
+
+                `
+
+            });
+
+        });
+
+
+
+        /* =====================================================
+           SALVAR EMPRESA NO SELECT
+        ===================================================== */
+
+        document.addEventListener("submit", (event) => {
+
+            if (
+                event.target.id !== "company-form"
+            ) {
+                return;
+            }
+
+
+            event.preventDefault();
+
+
+            const legalName =
+                document
+                    .querySelector("#company-legal-name")
+                    ?.value
+                    .trim();
+
+
+            const tradeName =
+                document
+                    .querySelector("#company-trade-name")
+                    ?.value
+                    .trim();
+
+
+            /*
+             * Se tiver Nome Fantasia,
+             * usamos ele no SELECT.
+             * Caso contrário usamos Razão Social.
+             */
+
+            const companyName =
+                tradeName || legalName;
+
+
+            const companySelect =
+                document.querySelector(
+                    "#contract-company"
+                );
+
+
+            if (
+                !companyName ||
+                !companySelect
+            ) {
+                return;
+            }
+
+
+            /* ==========================================
+               VERIFICA SE JÁ EXISTE
+            ========================================== */
+
+            const existingOption =
+                Array.from(
+                    companySelect.options
+                ).find(
+                    option =>
+                        option.value.toLowerCase() ===
+                        companyName.toLowerCase()
+                );
+
+
+            if (existingOption) {
+
+                companySelect.value =
+                    existingOption.value;
+
+            }
+
+
+            else {
+
+                const option =
+                    document.createElement("option");
+
+
+                option.value =
+                    companyName;
+
+
+                option.textContent =
+                    companyName;
+
+
+                companySelect.appendChild(
+                    option
+                );
+
+
+                companySelect.value =
+                    companyName;
+
+            }
+
+
+            /*
+             * Fecha o modal de empresa.
+             *
+             * O modal.js atualizado vai restaurar
+             * o modal Novo Contrato.
+             */
+
+            UIModal.close();
 
         });
 
     }
 
 
-    static renderTable(data = this.contracts) {
+
+    /* =========================================================
+       TABELA
+    ========================================================= */
+
+    static renderTable(
+        data = this.contracts
+    ) {
 
         UITable.render({
 
-            target: "#contracts-table",
+            target:
+                "#contracts-table",
+
 
             columns: [
 
@@ -224,25 +968,41 @@ window.ContractsPage = class ContractsPage {
 
             rowRenderer: (contract) => {
 
-                let statusText = "Ativo";
 
-                let statusClass = "status-active";
+                let statusText =
+                    "Ativo";
 
 
-                if (contract.status === "vencendo") {
+                let statusClass =
+                    "status-active";
 
-                    statusText = "Vencendo";
 
-                    statusClass = "status-expiring";
+                if (
+                    contract.status ===
+                    "vencendo"
+                ) {
+
+                    statusText =
+                        "Vencendo";
+
+
+                    statusClass =
+                        "status-expiring";
 
                 }
 
 
-                if (contract.status === "vencido") {
+                if (
+                    contract.status ===
+                    "vencido"
+                ) {
 
-                    statusText = "Vencido";
+                    statusText =
+                        "Vencido";
 
-                    statusClass = "status-expired";
+
+                    statusClass =
+                        "status-expired";
 
                 }
 
@@ -256,6 +1016,7 @@ window.ContractsPage = class ContractsPage {
                 return `
 
                     <tr>
+
 
                         <td>
 
@@ -276,6 +1037,7 @@ window.ContractsPage = class ContractsPage {
 
                                 </div>
 
+
                                 <span class="company-name">
 
                                     ${contract.company}
@@ -288,27 +1050,37 @@ window.ContractsPage = class ContractsPage {
 
 
                         <td>
+
                             ${contract.category}
+
                         </td>
 
 
                         <td>
+
                             ${contract.responsible}
+
                         </td>
 
 
                         <td>
+
                             ${contract.value}
+
                         </td>
 
 
                         <td>
+
                             ${contract.start}
+
                         </td>
 
 
                         <td>
+
                             ${contract.end}
+
                         </td>
 
 
@@ -332,6 +1104,8 @@ window.ContractsPage = class ContractsPage {
                             <div class="contract-actions">
 
 
+                                <!-- VISUALIZAR -->
+
                                 <button
                                     type="button"
                                     class="action-btn"
@@ -342,6 +1116,8 @@ window.ContractsPage = class ContractsPage {
 
                                 </button>
 
+
+                                <!-- EDITAR -->
 
                                 <button
                                     type="button"
@@ -354,6 +1130,8 @@ window.ContractsPage = class ContractsPage {
                                 </button>
 
 
+                                <!-- DOCUMENTOS -->
+
                                 <button
                                     type="button"
                                     class="action-btn"
@@ -365,7 +1143,10 @@ window.ContractsPage = class ContractsPage {
                                 </button>
 
 
+                                <!-- MAIS -->
+
                                 <div class="ui-dropdown">
+
 
                                     <button
                                         type="button"
@@ -379,6 +1160,7 @@ window.ContractsPage = class ContractsPage {
 
 
                                     <div class="ui-dropdown-menu">
+
 
                                         <button
                                             type="button"
@@ -416,7 +1198,9 @@ window.ContractsPage = class ContractsPage {
                                         </button>
 
 
-                                        <div class="ui-dropdown-divider"></div>
+                                        <div
+                                            class="ui-dropdown-divider"
+                                        ></div>
 
 
                                         <button
@@ -430,13 +1214,16 @@ window.ContractsPage = class ContractsPage {
 
                                         </button>
 
+
                                     </div>
 
                                 </div>
 
+
                             </div>
 
                         </td>
+
 
                     </tr>
 

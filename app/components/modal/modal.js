@@ -2,6 +2,12 @@ class UIModal {
 
     static element = null;
 
+    static stack = [];
+
+
+    /* =====================================================
+       INICIALIZAÇÃO
+    ===================================================== */
 
     static init() {
 
@@ -24,6 +30,11 @@ class UIModal {
 
     }
 
+
+
+    /* =====================================================
+       CRIA MODAL
+    ===================================================== */
 
     static create() {
 
@@ -50,7 +61,10 @@ class UIModal {
                 aria-hidden="true"
             >
 
-                <div class="ui-modal-overlay"></div>
+
+                <div
+                    class="ui-modal-overlay"
+                ></div>
 
 
                 <div
@@ -59,9 +73,14 @@ class UIModal {
                     aria-modal="true"
                 >
 
-                    <header class="ui-modal-header">
+
+                    <header
+                        class="ui-modal-header"
+                    >
+
 
                         <div>
+
 
                             <h2
                                 id="ui-modal-title"
@@ -76,6 +95,7 @@ class UIModal {
                                 class="ui-modal-subtitle"
                             ></p>
 
+
                         </div>
 
 
@@ -86,9 +106,12 @@ class UIModal {
                             aria-label="Fechar"
                         >
 
-                            <i class="fa-solid fa-xmark"></i>
+                            <i
+                                class="fa-solid fa-xmark"
+                            ></i>
 
                         </button>
+
 
                     </header>
 
@@ -104,7 +127,9 @@ class UIModal {
                         class="ui-modal-footer"
                     ></footer>
 
+
                 </div>
+
 
             </div>
 
@@ -112,6 +137,11 @@ class UIModal {
 
     }
 
+
+
+    /* =====================================================
+       EVENTOS
+    ===================================================== */
 
     static bindEvents() {
 
@@ -158,6 +188,11 @@ class UIModal {
     }
 
 
+
+    /* =====================================================
+       ABRIR MODAL
+    ===================================================== */
+
     static open({
 
         title = "Modal",
@@ -166,9 +201,12 @@ class UIModal {
 
         content = "",
 
-        footer = ""
+        footer = "",
+
+        preserveCurrent = true
 
     } = {}) {
+
 
         if (!this.element) {
 
@@ -177,27 +215,84 @@ class UIModal {
         }
 
 
-        if (!this.element) return;
+        if (!this.element) {
+            return;
+        }
+
+
+        /*
+         * Se já existe um modal aberto,
+         * guarda o conteúdo dele.
+         *
+         * Isso permite:
+         *
+         * Novo Contrato
+         *       ↓
+         * Nova Empresa
+         *       ↓
+         * volta para Novo Contrato
+         */
+
+        if (
+            preserveCurrent &&
+            this.isOpen()
+        ) {
+
+
+            this.stack.push({
+
+                title:
+                    document.querySelector(
+                        "#ui-modal-title"
+                    )?.textContent || "",
+
+
+                subtitle:
+                    document.querySelector(
+                        "#ui-modal-subtitle"
+                    )?.textContent || "",
+
+
+                content:
+                    document.querySelector(
+                        "#ui-modal-body"
+                    )?.innerHTML || "",
+
+
+                footer:
+                    document.querySelector(
+                        "#ui-modal-footer"
+                    )?.innerHTML || ""
+
+            });
+
+        }
+
 
 
         document.querySelector(
             "#ui-modal-title"
-        ).textContent = title;
+        ).textContent =
+            title;
 
 
         document.querySelector(
             "#ui-modal-subtitle"
-        ).textContent = subtitle;
+        ).textContent =
+            subtitle;
 
 
         document.querySelector(
             "#ui-modal-body"
-        ).innerHTML = content;
+        ).innerHTML =
+            content;
 
 
         document.querySelector(
             "#ui-modal-footer"
-        ).innerHTML = footer;
+        ).innerHTML =
+            footer;
+
 
 
         this.element.classList.add(
@@ -218,10 +313,77 @@ class UIModal {
     }
 
 
+
+    /* =====================================================
+       FECHAR MODAL
+    ===================================================== */
+
     static close() {
 
-        if (!this.element) return;
+        if (!this.element) {
+            return;
+        }
 
+
+        /*
+         * Se existe um modal anterior,
+         * restaura o conteúdo.
+         */
+
+        if (
+            this.stack.length > 0
+        ) {
+
+
+            const previous =
+                this.stack.pop();
+
+
+            document.querySelector(
+                "#ui-modal-title"
+            ).textContent =
+                previous.title;
+
+
+            document.querySelector(
+                "#ui-modal-subtitle"
+            ).textContent =
+                previous.subtitle;
+
+
+            document.querySelector(
+                "#ui-modal-body"
+            ).innerHTML =
+                previous.content;
+
+
+            document.querySelector(
+                "#ui-modal-footer"
+            ).innerHTML =
+                previous.footer;
+
+
+            this.element.classList.add(
+                "open"
+            );
+
+
+            this.element.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+
+            return;
+
+        }
+
+
+
+        /*
+         * Não existe modal anterior.
+         * Então fecha definitivamente.
+         */
 
         this.element.classList.remove(
             "open"
@@ -241,10 +403,17 @@ class UIModal {
     }
 
 
+
+    /* =====================================================
+       VERIFICA SE ESTÁ ABERTO
+    ===================================================== */
+
     static isOpen() {
 
-        return this.element?.classList.contains(
-            "open"
+        return (
+            this.element?.classList.contains(
+                "open"
+            )
         ) || false;
 
     }
