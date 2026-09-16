@@ -92,14 +92,13 @@ window.ContractsPage = class ContractsPage {
 
     ];
 
-
     static init() {
 
         console.log("Tela Contratos carregada.");
 
         this.renderTable();
 
-
+        this.bindActionEvents();
         /* =====================================================
            NOVO CONTRATO
         ===================================================== */
@@ -897,7 +896,79 @@ window.ContractsPage = class ContractsPage {
 
     }
 
+    static bindActionEvents() {
 
+        const table =
+            document.querySelector("#contracts-table");
+
+        if (!table) {
+            return;
+        }
+
+
+        table.addEventListener("click", (event) => {
+
+            const button =
+                event.target.closest("[data-action]");
+
+            if (!button) {
+                return;
+            }
+
+
+            const action =
+                button.dataset.action;
+
+            const contractNumber =
+                button.dataset.contract;
+
+
+            if (!contractNumber) {
+                return;
+            }
+
+
+            switch (action) {
+
+                case "view":
+                    this.viewContract(contractNumber);
+                    break;
+
+
+                case "edit":
+                    this.editContract(contractNumber);
+                    break;
+
+
+                case "documents":
+                    this.openDocuments(contractNumber);
+                    break;
+
+
+                case "duplicate":
+                    this.duplicateContract(contractNumber);
+                    break;
+
+
+                case "renew":
+                    this.renewContract(contractNumber);
+                    break;
+
+
+                case "archive":
+                    this.archiveContract(contractNumber);
+                    break;
+
+
+                case "delete":
+                    this.deleteContract(contractNumber);
+                    break;
+
+            }
+
+        });
+
+    }
 
     /* =========================================================
        TABELA
@@ -1098,141 +1169,696 @@ window.ContractsPage = class ContractsPage {
 
                         </td>
 
-
                         <td>
-
                             <div class="contract-actions">
 
-
                                 <!-- VISUALIZAR -->
-
                                 <button
                                     type="button"
                                     class="action-btn"
                                     title="Visualizar"
+                                    data-action="view"
+                                    data-contract="${contract.number}"
                                 >
-
                                     <i class="fa-solid fa-eye"></i>
-
                                 </button>
 
 
                                 <!-- EDITAR -->
-
                                 <button
                                     type="button"
                                     class="action-btn"
                                     title="Editar"
+                                    data-action="edit"
+                                    data-contract="${contract.number}"
                                 >
-
                                     <i class="fa-solid fa-pen"></i>
-
                                 </button>
 
 
                                 <!-- DOCUMENTOS -->
-
                                 <button
                                     type="button"
                                     class="action-btn"
                                     title="Documentos"
+                                    data-action="documents"
+                                    data-contract="${contract.number}"
                                 >
-
                                     <i class="fa-solid fa-file"></i>
-
                                 </button>
 
 
-                                <!-- MAIS -->
-
+                                <!-- MENU -->
                                 <div class="ui-dropdown">
-
 
                                     <button
                                         type="button"
                                         class="ui-dropdown-toggle"
                                         title="Mais opções"
                                     >
-
                                         <i class="fa-solid fa-ellipsis-vertical"></i>
-
                                     </button>
 
 
                                     <div class="ui-dropdown-menu">
 
-
+                                        <!-- DUPLICAR -->
                                         <button
                                             type="button"
                                             class="ui-dropdown-item"
+                                            data-action="duplicate"
+                                            data-contract="${contract.number}"
                                         >
-
                                             <i class="fa-regular fa-copy"></i>
-
                                             Duplicar contrato
-
                                         </button>
 
 
+                                        <!-- RENOVAR -->
                                         <button
                                             type="button"
                                             class="ui-dropdown-item"
+                                            data-action="renew"
+                                            data-contract="${contract.number}"
                                         >
-
                                             <i class="fa-solid fa-rotate"></i>
-
                                             Renovar contrato
-
                                         </button>
 
 
+                                        <!-- ARQUIVAR -->
                                         <button
                                             type="button"
                                             class="ui-dropdown-item"
+                                            data-action="archive"
+                                            data-contract="${contract.number}"
                                         >
-
                                             <i class="fa-solid fa-box-archive"></i>
-
                                             Arquivar contrato
-
                                         </button>
 
 
-                                        <div
-                                            class="ui-dropdown-divider"
-                                        ></div>
+                                        <div class="ui-dropdown-divider"></div>
 
 
+                                        <!-- EXCLUIR -->
                                         <button
                                             type="button"
                                             class="ui-dropdown-item danger"
+                                            data-action="delete"
+                                            data-contract="${contract.number}"
                                         >
-
                                             <i class="fa-solid fa-trash"></i>
-
                                             Excluir contrato
-
                                         </button>
-
 
                                     </div>
 
                                 </div>
 
-
                             </div>
-
                         </td>
-
 
                     </tr>
 
                 `;
 
             }
+            
+
+        });
+
+    }
+    static viewContract(number) {
+
+        const contract =
+            this.contracts.find(
+                item => item.number === number
+            );
+
+
+        if (!contract) {
+            return;
+        }
+
+
+        let statusText = "Ativo";
+
+
+        if (contract.status === "vencendo") {
+            statusText = "Vencendo";
+        }
+
+        if (contract.status === "vencido") {
+            statusText = "Vencido";
+        }
+
+        if (contract.status === "arquivado") {
+            statusText = "Arquivado";
+        }
+
+
+        UIModal.open({
+
+            title: `Contrato ${contract.number}`,
+
+            subtitle:
+                "Visualização dos dados cadastrados.",
+
+            content: `
+
+            <div class="contract-view">
+
+                <div class="contract-view-grid">
+
+                    <div>
+                        <span>Nº do contrato</span>
+                        <strong>${contract.number}</strong>
+                    </div>
+
+                    <div>
+                        <span>Status</span>
+                        <strong>${statusText}</strong>
+                    </div>
+
+                    <div>
+                        <span>Empresa</span>
+                        <strong>${contract.company}</strong>
+                    </div>
+
+                    <div>
+                        <span>Categoria</span>
+                        <strong>${contract.category}</strong>
+                    </div>
+
+                    <div>
+                        <span>Responsável</span>
+                        <strong>${contract.responsible}</strong>
+                    </div>
+
+                    <div>
+                        <span>Valor</span>
+                        <strong>${contract.value}</strong>
+                    </div>
+
+                    <div>
+                        <span>Data de início</span>
+                        <strong>${contract.start}</strong>
+                    </div>
+
+                    <div>
+                        <span>Vencimento</span>
+                        <strong>${contract.end}</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        `,
+
+            footer: `
+
+            <button
+                type="button"
+                class="fx-btn fx-btn-secondary"
+                onclick="UIModal.close()"
+            >
+                Fechar
+            </button>
+
+        `
 
         });
 
     }
 
+    static viewContract(number) {
+
+        const contract =
+            this.contracts.find(
+                item => item.number === number
+            );
+
+
+        if (!contract) {
+            return;
+        }
+
+
+        let statusText = "Ativo";
+
+
+        if (contract.status === "vencendo") {
+            statusText = "Vencendo";
+        }
+
+        if (contract.status === "vencido") {
+            statusText = "Vencido";
+        }
+
+        if (contract.status === "arquivado") {
+            statusText = "Arquivado";
+        }
+
+
+        UIModal.open({
+
+            title: `Contrato ${contract.number}`,
+
+            subtitle:
+                "Visualização dos dados cadastrados.",
+
+            content: `
+
+            <div class="contract-view">
+
+                <div class="contract-view-grid">
+
+                    <div>
+                        <span>Nº do contrato</span>
+                        <strong>${contract.number}</strong>
+                    </div>
+
+                    <div>
+                        <span>Status</span>
+                        <strong>${statusText}</strong>
+                    </div>
+
+                    <div>
+                        <span>Empresa</span>
+                        <strong>${contract.company}</strong>
+                    </div>
+
+                    <div>
+                        <span>Categoria</span>
+                        <strong>${contract.category}</strong>
+                    </div>
+
+                    <div>
+                        <span>Responsável</span>
+                        <strong>${contract.responsible}</strong>
+                    </div>
+
+                    <div>
+                        <span>Valor</span>
+                        <strong>${contract.value}</strong>
+                    </div>
+
+                    <div>
+                        <span>Data de início</span>
+                        <strong>${contract.start}</strong>
+                    </div>
+
+                    <div>
+                        <span>Vencimento</span>
+                        <strong>${contract.end}</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        `,
+
+            footer: `
+
+            <button
+                type="button"
+                class="fx-btn fx-btn-secondary"
+                onclick="UIModal.close()"
+            >
+                Fechar
+            </button>
+
+        `
+
+        });
+
+    }
+    static editContract(number) {
+
+        const contract =
+            this.contracts.find(
+                item => item.number === number
+            );
+
+
+        if (!contract) {
+            return;
+        }
+
+
+        UIModal.open({
+
+            title: `Editar ${contract.number}`,
+
+            subtitle:
+                "Altere as informações do contrato.",
+
+            content: `
+
+            <form id="edit-contract-form">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>Empresa</label>
+
+                        <input
+                            type="text"
+                            id="edit-company"
+                            value="${contract.company}"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Categoria</label>
+
+                        <input
+                            type="text"
+                            id="edit-category"
+                            value="${contract.category}"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Responsável</label>
+
+                        <input
+                            type="text"
+                            id="edit-responsible"
+                            value="${contract.responsible}"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Valor</label>
+
+                        <input
+                            type="text"
+                            id="edit-value"
+                            value="${contract.value}"
+                        >
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        `,
+
+            footer: `
+
+            <button
+                type="button"
+                class="fx-btn fx-btn-secondary"
+                onclick="UIModal.close()"
+            >
+                Cancelar
+            </button>
+
+
+            <button
+                type="button"
+                class="fx-btn fx-btn-primary"
+                id="save-edit-contract"
+            >
+                <i class="fa-solid fa-check"></i>
+                Salvar alterações
+            </button>
+
+        `
+
+        });
+
+
+        setTimeout(() => {
+
+            const saveButton =
+                document.querySelector(
+                    "#save-edit-contract"
+                );
+
+
+            saveButton?.addEventListener("click", () => {
+
+                contract.company =
+                    document.querySelector("#edit-company").value;
+
+                contract.category =
+                    document.querySelector("#edit-category").value;
+
+                contract.responsible =
+                    document.querySelector("#edit-responsible").value;
+
+                contract.value =
+                    document.querySelector("#edit-value").value;
+
+
+                UIModal.close();
+
+                this.renderTable();
+
+            });
+
+        }, 50);
+
+    }
+    static openDocuments(number) {
+
+        const contract =
+            this.contracts.find(
+                item => item.number === number
+            );
+
+
+        if (!contract) {
+            return;
+        }
+
+
+        UIModal.open({
+
+            title: `Documentos — ${contract.number}`,
+
+            subtitle:
+                `${contract.company} • ${contract.category}`,
+
+            content: `
+
+            <div class="contract-documents-empty">
+
+                <i class="fa-solid fa-folder-open"></i>
+
+                <strong>
+                    Nenhum documento cadastrado
+                </strong>
+
+                <span>
+                    Os documentos vinculados a este contrato
+                    aparecerão aqui.
+                </span>
+
+            </div>
+
+        `,
+
+            footer: `
+
+            <button
+                type="button"
+                class="fx-btn fx-btn-secondary"
+                onclick="UIModal.close()"
+            >
+                Fechar
+            </button>
+
+        `
+
+        });
+
+    }
+    static duplicateContract(number) {
+
+        const contract =
+            this.contracts.find(
+                item => item.number === number
+            );
+
+
+        if (!contract) {
+            return;
+        }
+
+
+        const numbers =
+            this.contracts
+                .map(item => {
+                    return parseInt(
+                        item.number.replace("CT-", "")
+                    );
+                })
+                .filter(number => !isNaN(number));
+
+
+        const nextNumber =
+            Math.max(...numbers, 0) + 1;
+
+
+        const newNumber =
+            `CT-${String(nextNumber).padStart(3, "0")}`;
+
+
+        const duplicated = {
+            ...contract,
+            number: newNumber,
+            status: "ativo"
+        };
+
+
+        this.contracts.push(duplicated);
+
+
+        this.renderTable();
+
+
+        this.editContract(newNumber);
+
+    }
+    static renewContract(number) {
+
+        const contract =
+            this.contracts.find(
+                item => item.number === number
+            );
+
+
+        if (!contract) {
+            return;
+        }
+
+
+        const confirmed =
+            confirm(
+                `Deseja renovar o contrato ${contract.number} por mais 1 ano?`
+            );
+
+
+        if (!confirmed) {
+            return;
+        }
+
+
+        const parts =
+            contract.end.split("/");
+
+
+        const date =
+            new Date(
+                parts[2],
+                parts[1] - 1,
+                parts[0]
+            );
+
+
+        date.setFullYear(
+            date.getFullYear() + 1
+        );
+
+
+        const day =
+            String(date.getDate()).padStart(2, "0");
+
+        const month =
+            String(date.getMonth() + 1).padStart(2, "0");
+
+        const year =
+            date.getFullYear();
+
+
+        contract.end =
+            `${day}/${month}/${year}`;
+
+
+        contract.status = "ativo";
+
+
+        this.renderTable();
+
+    }
+    static archiveContract(number) {
+
+        const contract =
+            this.contracts.find(
+                item => item.number === number
+            );
+
+
+        if (!contract) {
+            return;
+        }
+
+
+        const confirmed =
+            confirm(
+                `Deseja arquivar o contrato ${contract.number}?`
+            );
+
+
+        if (!confirmed) {
+            return;
+        }
+
+
+        contract.status = "arquivado";
+
+
+        this.renderTable();
+
+    }
+    static deleteContract(number) {
+
+        const contract =
+            this.contracts.find(
+                item => item.number === number
+            );
+
+
+        if (!contract) {
+            return;
+        }
+
+
+        const confirmed =
+            confirm(
+                `Deseja excluir o contrato ${contract.number}?\n\nEsta ação não poderá ser desfeita.`
+            );
+
+
+        if (!confirmed) {
+            return;
+        }
+
+
+        this.contracts =
+            this.contracts.filter(
+                item => item.number !== number
+            );
+
+
+        this.renderTable();
+
+    }
 };
