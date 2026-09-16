@@ -1,41 +1,309 @@
 <section class="companies-page">
 
+    <!-- =====================================================
+         CABEÇALHO
+    ====================================================== -->
+
     <header class="page-header">
 
-        <div>
-            <h1>Empresas</h1>
-            <p>Cadastre e gerencie as empresas.</p>
+        <div class="page-header-info">
+
+            <h1>
+                Empresas
+            </h1>
+
+            <p>
+                Cadastre e gerencie as empresas.
+            </p>
+
         </div>
 
-        <button class="btn-primary">
+
+        <button
+            type="button"
+            class="fx-btn fx-btn-primary"
+            id="btn-new-company-page"
+        >
+
             <i class="fa-solid fa-plus"></i>
+
             Nova Empresa
+
         </button>
 
     </header>
 
-    <section class="table-card">
 
-        <table class="companies-table">
 
-            <thead>
+    <!-- =====================================================
+         FILTROS
+    ====================================================== -->
 
-                <tr>
-                    <th>Empresa</th>
-                    <th>CNPJ</th>
-                    <th>Contato</th>
-                    <th>Telefone</th>
-                    <th>E-mail</th>
-                    <th></th>
-                </tr>
+    <section class="companies-toolbar">
 
-            </thead>
 
-            <tbody id="companies-body">
+        <!-- PESQUISA -->
 
-            </tbody>
+        <div class="companies-search">
 
-        </table>
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="company-search"
+                placeholder="Pesquisar empresa ou CNPJ..."
+            >
+
+        </div>
+
+
+        <!-- STATUS -->
+
+        <div class="companies-filter">
+
+            <select id="company-status-filter">
+
+                <option value="">
+                    Todos os status
+                </option>
+
+                <option value="ativo">
+                    Ativas
+                </option>
+
+                <option value="inativo">
+                    Inativas
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- MAIS FILTROS -->
+
+        <button
+            type="button"
+            class="companies-filter-button"
+            id="btn-company-filters"
+        >
+
+            <i class="fa-solid fa-filter"></i>
+
+            Mais filtros
+
+        </button>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         INDICADORES
+    ====================================================== -->
+
+    <section class="companies-stats">
+
+
+        <div class="company-stat-card">
+
+            <div class="company-stat-icon">
+
+                <i class="fa-solid fa-building"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    Total de empresas
+                </span>
+
+                <strong id="companies-total">
+                    8
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="company-stat-card">
+
+            <div class="company-stat-icon active">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    Empresas ativas
+                </span>
+
+                <strong id="companies-active">
+                    7
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="company-stat-card">
+
+            <div class="company-stat-icon inactive">
+
+                <i class="fa-solid fa-circle-pause"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    Empresas inativas
+                </span>
+
+                <strong id="companies-inactive">
+                    1
+                </strong>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         TABELA
+    ====================================================== -->
+
+    <section class="companies-table-card">
+
+
+        <div class="companies-table-header">
+
+            <div>
+
+                <h2>
+                    Empresas cadastradas
+                </h2>
+
+                <span>
+                    Lista de empresas utilizadas nos contratos
+                </span>
+
+            </div>
+
+
+            <span
+                class="companies-count"
+                id="companies-count"
+            >
+                8 empresas
+            </span>
+
+        </div>
+
+
+
+        <div class="companies-table-wrapper">
+
+            <table class="companies-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Empresa
+                        </th>
+
+                        <th>
+                            CNPJ
+                        </th>
+
+                        <th>
+                            Contato
+                        </th>
+
+                        <th>
+                            Telefone
+                        </th>
+
+                        <th>
+                            E-mail
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Ações
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="companies-body">
+
+                    <!-- JS -->
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+
+        <!-- =================================================
+             PAGINAÇÃO
+        ================================================== -->
+
+        <div class="companies-pagination">
+
+            <span>
+                Mostrando 1–8 de 8 empresas
+            </span>
+
+
+            <div class="pagination-buttons">
+
+                <button
+                    type="button"
+                    disabled
+                >
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+
+                <button
+                    type="button"
+                    class="active"
+                >
+                    1
+                </button>
+
+                <button
+                    type="button"
+                >
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+
+            </div>
+
+        </div>
+
 
     </section>
 
