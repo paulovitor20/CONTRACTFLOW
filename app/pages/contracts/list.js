@@ -101,9 +101,6 @@ window.ContractsPage = class ContractsPage {
         this.renderTable();
 
         this.bindActionEvents();
-        /* =====================================================
-           NOVO CONTRATO
-        ===================================================== */
 
         const newContractButton =
             document.querySelector("#btn-new-contract");
@@ -1185,7 +1182,6 @@ window.ContractsPage = class ContractsPage {
                                     <i class="fa-solid fa-eye"></i>
                                 </button>
 
-
                                 <!-- EDITAR -->
                                 <button
                                     type="button"
@@ -1196,7 +1192,6 @@ window.ContractsPage = class ContractsPage {
                                 >
                                     <i class="fa-solid fa-pen"></i>
                                 </button>
-
 
                                 <!-- DOCUMENTOS -->
                                 <button
@@ -1209,7 +1204,6 @@ window.ContractsPage = class ContractsPage {
                                     <i class="fa-solid fa-file"></i>
                                 </button>
 
-
                                 <!-- MENU -->
                                 <div class="ui-dropdown">
 
@@ -1220,7 +1214,6 @@ window.ContractsPage = class ContractsPage {
                                     >
                                         <i class="fa-solid fa-ellipsis-vertical"></i>
                                     </button>
-
 
                                     <div class="ui-dropdown-menu">
 
@@ -1235,7 +1228,6 @@ window.ContractsPage = class ContractsPage {
                                             Duplicar contrato
                                         </button>
 
-
                                         <!-- RENOVAR -->
                                         <button
                                             type="button"
@@ -1246,7 +1238,6 @@ window.ContractsPage = class ContractsPage {
                                             <i class="fa-solid fa-rotate"></i>
                                             Renovar contrato
                                         </button>
-
 
                                         <!-- ARQUIVAR -->
                                         <button
@@ -1259,9 +1250,7 @@ window.ContractsPage = class ContractsPage {
                                             Arquivar contrato
                                         </button>
 
-
                                         <div class="ui-dropdown-divider"></div>
-
 
                                         <!-- EXCLUIR -->
                                         <button
@@ -2233,6 +2222,706 @@ window.ContractsPage = class ContractsPage {
 
 
         this.renderTable();
+
+    }
+    static bindActionEvents() {
+
+        const table =
+            document.querySelector("#contracts-table");
+
+        if (!table) {
+            return;
+        }
+
+
+        table.addEventListener("click", (event) => {
+
+            const button =
+                event.target.closest("[data-action]");
+
+            if (!button) {
+                return;
+            }
+
+
+            const action =
+                button.dataset.action;
+
+            const contractNumber =
+                button.dataset.contract;
+
+
+            if (!contractNumber) {
+                return;
+            }
+
+
+            switch (action) {
+
+                case "view":
+
+                    this.viewContract(contractNumber);
+
+                    break;
+
+
+                case "edit":
+
+                    this.editContract(contractNumber);
+
+                    break;
+
+
+                case "documents":
+
+                    this.openDocuments(contractNumber);
+
+                    break;
+
+            }
+
+        });
+
+    }
+    static editContract(number) {
+
+        const contract =
+            this.contracts.find(
+                item => item.number === number
+            );
+
+
+        if (!contract) {
+            return;
+        }
+
+
+        /*
+         * Converte DD/MM/AAAA para AAAA-MM-DD
+         * para preencher os campos type="date".
+         */
+        const formatDateForInput = (date) => {
+
+            if (!date) {
+                return "";
+            }
+
+
+            const parts =
+                date.split("/");
+
+
+            if (parts.length !== 3) {
+                return "";
+            }
+
+
+            return `${parts[2]}-${parts[1]}-${parts[0]}`;
+
+        };
+
+
+        const startDate =
+            formatDateForInput(contract.start);
+
+        const endDate =
+            formatDateForInput(contract.end);
+
+
+        UIModal.open({
+
+            title: "Editar Contrato",
+
+            subtitle:
+                "Altere os dados do contrato cadastrado.",
+
+
+            content: `
+
+            <form
+                id="edit-contract-form"
+                class="contract-form"
+            >
+
+
+                <!-- =====================================
+                     INFORMAÇÕES DO CONTRATO
+                ====================================== -->
+
+                <div class="form-section">
+
+                    <div class="form-section-title">
+
+                        <i class="fa-solid fa-file-contract"></i>
+
+                        <div>
+
+                            <strong>
+                                Informações do contrato
+                            </strong>
+
+                            <span>
+                                Dados principais do contrato
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+
+                        <!-- Nº -->
+
+                        <div class="form-group">
+
+                            <label for="edit-contract-number">
+                                Nº do contrato
+                            </label>
+
+                            <input
+                                type="text"
+                                id="edit-contract-number"
+                                value="${contract.number || ""}"
+                                readonly
+                            >
+
+                        </div>
+
+
+                        <!-- EMPRESA -->
+
+                        <div class="form-group">
+
+                            <label for="edit-contract-company">
+                                Empresa
+                                <span>*</span>
+                            </label>
+
+
+                            <div class="company-select-wrapper">
+
+                                <select
+                                    id="edit-contract-company"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Selecione a empresa
+                                    </option>
+
+                                    <option
+                                        value="Carvalho Transportes"
+                                        ${contract.company === "Carvalho Transportes" ? "selected" : ""}
+                                    >
+                                        Carvalho Transportes
+                                    </option>
+
+                                    <option
+                                        value="Vivo"
+                                        ${contract.company === "Vivo" ? "selected" : ""}
+                                    >
+                                        Vivo
+                                    </option>
+
+                                    <option
+                                        value="AWS"
+                                        ${contract.company === "AWS" ? "selected" : ""}
+                                    >
+                                        AWS
+                                    </option>
+
+                                    <option
+                                        value="Google"
+                                        ${contract.company === "Google" ? "selected" : ""}
+                                    >
+                                        Google
+                                    </option>
+
+                                    <option
+                                        value="Sicredi"
+                                        ${contract.company === "Sicredi" ? "selected" : ""}
+                                    >
+                                        Sicredi
+                                    </option>
+
+                                    <option
+                                        value="Alelo"
+                                        ${contract.company === "Alelo" ? "selected" : ""}
+                                    >
+                                        Alelo
+                                    </option>
+
+                                    <option
+                                        value="Fretebras"
+                                        ${contract.company === "Fretebras" ? "selected" : ""}
+                                    >
+                                        Fretebras
+                                    </option>
+
+                                    <option
+                                        value="Banco do Brasil"
+                                        ${contract.company === "Banco do Brasil" ? "selected" : ""}
+                                    >
+                                        Banco do Brasil
+                                    </option>
+
+                                </select>
+
+
+                                <button
+                                    type="button"
+                                    class="btn-new-company"
+                                    title="Cadastrar nova empresa"
+                                >
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- CATEGORIA -->
+
+                        <div class="form-group">
+
+                            <label for="edit-contract-category">
+                                Categoria
+                                <span>*</span>
+                            </label>
+
+                            <select
+                                id="edit-contract-category"
+                                required
+                            >
+
+                                <option value="">
+                                    Selecione
+                                </option>
+
+                                <option
+                                    ${contract.category === "Transporte" ? "selected" : ""}
+                                >
+                                    Transporte
+                                </option>
+
+                                <option
+                                    ${contract.category === "Telefonia" ? "selected" : ""}
+                                >
+                                    Telefonia
+                                </option>
+
+                                <option
+                                    ${contract.category === "Cloud" ? "selected" : ""}
+                                >
+                                    Cloud
+                                </option>
+
+                                <option
+                                    ${contract.category === "Serviços" ? "selected" : ""}
+                                >
+                                    Serviços
+                                </option>
+
+                                <option
+                                    ${contract.category === "Financeiro" ? "selected" : ""}
+                                >
+                                    Financeiro
+                                </option>
+
+                                <option
+                                    ${contract.category === "Benefícios" ? "selected" : ""}
+                                >
+                                    Benefícios
+                                </option>
+
+                                <option
+                                    ${contract.category === "Logística" ? "selected" : ""}
+                                >
+                                    Logística
+                                </option>
+
+                                <option
+                                    ${contract.category === "Seguro" ? "selected" : ""}
+                                >
+                                    Seguro
+                                </option>
+
+                                <option
+                                    ${contract.category === "Aluguel" ? "selected" : ""}
+                                >
+                                    Aluguel
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- RESPONSÁVEL -->
+
+                        <div class="form-group">
+
+                            <label for="edit-contract-responsible">
+                                Responsável
+                                <span>*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="edit-contract-responsible"
+                                value="${contract.responsible || ""}"
+                                placeholder="Nome do responsável"
+                                required
+                            >
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =====================================
+                     VIGÊNCIA E VALORES
+                ====================================== -->
+
+                <div class="form-section">
+
+                    <div class="form-section-title">
+
+                        <i class="fa-solid fa-calendar-days"></i>
+
+                        <div>
+
+                            <strong>
+                                Vigência e valores
+                            </strong>
+
+                            <span>
+                                Período e informações financeiras
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+
+                        <!-- VALOR -->
+
+                        <div class="form-group">
+
+                            <label for="edit-contract-value">
+                                Valor
+                                <span>*</span>
+                            </label>
+
+                            <div class="input-money">
+
+                                <span>R$</span>
+
+                                <input
+                                    type="text"
+                                    id="edit-contract-value"
+                                    value="${(contract.value || "")
+                    .replace("R$", "")
+                    .trim()}"
+                                    placeholder="0,00"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- INÍCIO -->
+
+                        <div class="form-group">
+
+                            <label for="edit-contract-start">
+                                Data de início
+                                <span>*</span>
+                            </label>
+
+                            <input
+                                type="date"
+                                id="edit-contract-start"
+                                value="${startDate}"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- VENCIMENTO -->
+
+                        <div class="form-group">
+
+                            <label for="edit-contract-end">
+                                Data de vencimento
+                                <span>*</span>
+                            </label>
+
+                            <input
+                                type="date"
+                                id="edit-contract-end"
+                                value="${endDate}"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- STATUS -->
+
+                        <div class="form-group">
+
+                            <label for="edit-contract-status">
+                                Status
+                            </label>
+
+                            <select id="edit-contract-status">
+
+                                <option
+                                    value="ativo"
+                                    ${contract.status === "ativo" ? "selected" : ""}
+                                >
+                                    Ativo
+                                </option>
+
+                                <option
+                                    value="vencendo"
+                                    ${contract.status === "vencendo" ? "selected" : ""}
+                                >
+                                    Vencendo
+                                </option>
+
+                                <option
+                                    value="vencido"
+                                    ${contract.status === "vencido" ? "selected" : ""}
+                                >
+                                    Vencido
+                                </option>
+
+                                <option
+                                    value="arquivado"
+                                    ${contract.status === "arquivado" ? "selected" : ""}
+                                >
+                                    Arquivado
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =====================================
+                     OBSERVAÇÕES
+                ====================================== -->
+
+                <div class="form-section">
+
+                    <div class="form-section-title">
+
+                        <i class="fa-solid fa-align-left"></i>
+
+                        <div>
+
+                            <strong>
+                                Observações
+                            </strong>
+
+                            <span>
+                                Informações adicionais
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="edit-contract-notes">
+                            Observações
+                        </label>
+
+                        <textarea
+                            id="edit-contract-notes"
+                            rows="4"
+                            placeholder="Digite observações sobre este contrato..."
+                        >${contract.notes || ""}</textarea>
+
+                    </div>
+
+                </div>
+
+
+            </form>
+
+        `,
+
+
+            footer: `
+
+            <button
+                type="button"
+                class="fx-btn fx-btn-secondary"
+                onclick="UIModal.close()"
+            >
+                Cancelar
+            </button>
+
+
+            <button
+                type="button"
+                class="fx-btn fx-btn-primary"
+                id="btn-save-edit-contract"
+            >
+                <i class="fa-solid fa-check"></i>
+                Salvar alterações
+            </button>
+
+        `
+
+        });
+
+
+        setTimeout(() => {
+
+            const saveButton =
+                document.querySelector(
+                    "#btn-save-edit-contract"
+                );
+
+
+            saveButton?.addEventListener(
+                "click",
+                () => {
+
+                    const form =
+                        document.querySelector(
+                            "#edit-contract-form"
+                        );
+
+
+                    if (!form.checkValidity()) {
+
+                        form.reportValidity();
+
+                        return;
+
+                    }
+
+
+                    /*
+                     * Atualiza o objeto em memória
+                     */
+
+                    contract.company =
+                        document.querySelector(
+                            "#edit-contract-company"
+                        ).value;
+
+
+                    contract.category =
+                        document.querySelector(
+                            "#edit-contract-category"
+                        ).value;
+
+
+                    contract.responsible =
+                        document.querySelector(
+                            "#edit-contract-responsible"
+                        ).value;
+
+
+                    const value =
+                        document.querySelector(
+                            "#edit-contract-value"
+                        ).value.trim();
+
+
+                    contract.value =
+                        value.startsWith("R$")
+                            ? value
+                            : `R$ ${value}`;
+
+
+                    contract.start =
+                        this.formatDateFromInput(
+                            document.querySelector(
+                                "#edit-contract-start"
+                            ).value
+                        );
+
+
+                    contract.end =
+                        this.formatDateFromInput(
+                            document.querySelector(
+                                "#edit-contract-end"
+                            ).value
+                        );
+
+
+                    contract.status =
+                        document.querySelector(
+                            "#edit-contract-status"
+                        ).value;
+
+
+                    contract.notes =
+                        document.querySelector(
+                            "#edit-contract-notes"
+                        ).value.trim();
+
+
+                    /*
+                     * Fecha modal
+                     * e atualiza a tabela
+                     */
+
+                    UIModal.close();
+
+                    this.renderTable();
+
+                }
+            );
+
+        }, 50);
+
+    }
+    static formatDateFromInput(value) {
+
+        if (!value) {
+            return "";
+        }
+
+
+        const parts =
+            value.split("-");
+
+
+        if (parts.length !== 3) {
+            return value;
+        }
+
+
+        return `${parts[2]}/${parts[1]}/${parts[0]}`;
 
     }
 };
