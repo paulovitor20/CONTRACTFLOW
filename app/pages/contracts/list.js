@@ -10,7 +10,8 @@ window.ContractsPage = class ContractsPage {
             value: "R$ 15.000,00",
             start: "10/01/2026",
             end: "10/01/2027",
-            status: "ativo"
+            status: "ativo",
+            notes: "Contrato referente à prestação de serviços de transporte."
         },
 
         {
@@ -21,7 +22,8 @@ window.ContractsPage = class ContractsPage {
             value: "R$ 8.500,00",
             start: "15/02/2026",
             end: "15/08/2026",
-            status: "vencendo"
+            status: "vencendo",
+            notes: "Contrato referente à prestação de serviços de transporte."
         },
 
         {
@@ -1284,7 +1286,7 @@ window.ContractsPage = class ContractsPage {
                 `;
 
             }
-            
+
 
         });
 
@@ -1296,14 +1298,12 @@ window.ContractsPage = class ContractsPage {
                 item => item.number === number
             );
 
-
         if (!contract) {
             return;
         }
 
 
         let statusText = "Ativo";
-
 
         if (contract.status === "vencendo") {
             statusText = "Vencendo";
@@ -1323,59 +1323,250 @@ window.ContractsPage = class ContractsPage {
             title: `Contrato ${contract.number}`,
 
             subtitle:
-                "Visualização dos dados cadastrados.",
+                "Visualização completa das informações do contrato.",
+
 
             content: `
 
-            <div class="contract-view">
+            <div class="contract-view-form">
 
-                <div class="contract-view-grid">
 
-                    <div>
-                        <span>Nº do contrato</span>
-                        <strong>${contract.number}</strong>
+                <!-- =========================================
+                     INFORMAÇÕES DO CONTRATO
+                ========================================== -->
+
+                <div class="contract-view-section">
+
+                    <div class="contract-view-section-title">
+
+                        <div class="contract-view-section-icon">
+                            <i class="fa-solid fa-file-contract"></i>
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Informações do contrato
+                            </strong>
+
+                            <span>
+                                Dados principais do contrato
+                            </span>
+
+                        </div>
+
                     </div>
 
-                    <div>
-                        <span>Status</span>
-                        <strong>${statusText}</strong>
-                    </div>
 
-                    <div>
-                        <span>Empresa</span>
-                        <strong>${contract.company}</strong>
-                    </div>
+                    <div class="contract-view-grid">
 
-                    <div>
-                        <span>Categoria</span>
-                        <strong>${contract.category}</strong>
-                    </div>
 
-                    <div>
-                        <span>Responsável</span>
-                        <strong>${contract.responsible}</strong>
-                    </div>
+                        <div class="contract-view-field">
 
-                    <div>
-                        <span>Valor</span>
-                        <strong>${contract.value}</strong>
-                    </div>
+                            <label>
+                                Nº do contrato
+                            </label>
 
-                    <div>
-                        <span>Data de início</span>
-                        <strong>${contract.start}</strong>
-                    </div>
+                            <div class="contract-view-value">
+                                ${contract.number}
+                            </div>
 
-                    <div>
-                        <span>Vencimento</span>
-                        <strong>${contract.end}</strong>
+                        </div>
+
+
+                        <div class="contract-view-field">
+
+                            <label>
+                                Empresa
+                            </label>
+
+                            <div class="contract-view-value">
+                                ${contract.company}
+                            </div>
+
+                        </div>
+
+
+                        <div class="contract-view-field">
+
+                            <label>
+                                Categoria
+                            </label>
+
+                            <div class="contract-view-value">
+                                ${contract.category}
+                            </div>
+
+                        </div>
+
+
+                        <div class="contract-view-field">
+
+                            <label>
+                                Responsável
+                            </label>
+
+                            <div class="contract-view-value">
+                                ${contract.responsible}
+                            </div>
+
+                        </div>
+
+
                     </div>
 
                 </div>
 
+
+
+                <!-- =========================================
+                     VIGÊNCIA E VALORES
+                ========================================== -->
+
+                <div class="contract-view-section">
+
+                    <div class="contract-view-section-title">
+
+                        <div class="contract-view-section-icon">
+                            <i class="fa-solid fa-calendar-days"></i>
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Vigência e valores
+                            </strong>
+
+                            <span>
+                                Período e informações financeiras
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="contract-view-grid">
+
+
+                        <div class="contract-view-field">
+
+                            <label>
+                                Valor
+                            </label>
+
+                            <div class="contract-view-value">
+                                ${contract.value}
+                            </div>
+
+                        </div>
+
+
+                        <div class="contract-view-field">
+
+                            <label>
+                                Data de início
+                            </label>
+
+                            <div class="contract-view-value">
+                                ${contract.start}
+                            </div>
+
+                        </div>
+
+
+                        <div class="contract-view-field">
+
+                            <label>
+                                Data de vencimento
+                            </label>
+
+                            <div class="contract-view-value">
+                                ${contract.end}
+                            </div>
+
+                        </div>
+
+
+                        <div class="contract-view-field">
+
+                            <label>
+                                Status
+                            </label>
+
+                            <div class="contract-view-status">
+
+                                <span
+                                    class="contract-status ${contract.status === "ativo"
+                    ? "status-active"
+                    : contract.status === "vencendo"
+                        ? "status-expiring"
+                        : contract.status === "vencido"
+                            ? "status-expired"
+                            : "status-archived"
+                }"
+                                >
+
+                                    <i class="fa-solid fa-circle"></i>
+
+                                    ${statusText}
+
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================================
+                     OBSERVAÇÕES
+                ========================================== -->
+
+                <div class="contract-view-section">
+
+                    <div class="contract-view-section-title">
+
+                        <div class="contract-view-section-icon">
+                            <i class="fa-solid fa-align-left"></i>
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Observações
+                            </strong>
+
+                            <span>
+                                Informações adicionais
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="contract-view-notes">
+
+                        ${contract.notes
+                    ? contract.notes
+                    : "Nenhuma observação cadastrada."
+                }
+
+                    </div>
+
+                </div>
+
+
             </div>
 
         `,
+
 
             footer: `
 
@@ -1395,91 +1586,274 @@ window.ContractsPage = class ContractsPage {
 
     static viewContract(number) {
 
-        const contract =
-            this.contracts.find(
-                item => item.number === number
-            );
-
+        const contract = this.contracts.find(
+            item => item.number === number
+        );
 
         if (!contract) {
             return;
         }
 
-
         let statusText = "Ativo";
-
+        let statusClass = "status-active";
 
         if (contract.status === "vencendo") {
             statusText = "Vencendo";
+            statusClass = "status-expiring";
         }
 
         if (contract.status === "vencido") {
             statusText = "Vencido";
+            statusClass = "status-expired";
         }
 
         if (contract.status === "arquivado") {
             statusText = "Arquivado";
+            statusClass = "status-archived";
         }
 
 
         UIModal.open({
 
-            title: `Contrato ${contract.number}`,
+            title: "Visualizar contrato",
 
             subtitle:
-                "Visualização dos dados cadastrados.",
+                "Confira todas as informações cadastradas.",
+
 
             content: `
 
-            <div class="contract-view">
+            <div class="contract-view-form">
 
-                <div class="contract-view-grid">
 
-                    <div>
-                        <span>Nº do contrato</span>
-                        <strong>${contract.number}</strong>
+                <!-- =====================================
+                     INFORMAÇÕES DO CONTRATO
+                ====================================== -->
+
+                <div class="contract-view-section">
+
+                    <div class="contract-view-section-title">
+
+                        <div class="contract-view-section-icon">
+                            <i class="fa-solid fa-file-contract"></i>
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Informações do contrato
+                            </strong>
+
+                            <span>
+                                Dados principais do contrato
+                            </span>
+
+                        </div>
+
                     </div>
 
-                    <div>
-                        <span>Status</span>
-                        <strong>${statusText}</strong>
-                    </div>
 
-                    <div>
-                        <span>Empresa</span>
-                        <strong>${contract.company}</strong>
-                    </div>
+                    <div class="contract-view-grid">
 
-                    <div>
-                        <span>Categoria</span>
-                        <strong>${contract.category}</strong>
-                    </div>
 
-                    <div>
-                        <span>Responsável</span>
-                        <strong>${contract.responsible}</strong>
-                    </div>
+                        <div class="contract-view-field">
 
-                    <div>
-                        <span>Valor</span>
-                        <strong>${contract.value}</strong>
-                    </div>
+                            <label>
+                                Nº do contrato
+                            </label>
 
-                    <div>
-                        <span>Data de início</span>
-                        <strong>${contract.start}</strong>
-                    </div>
+                            <div class="contract-view-value">
+                                ${contract.number || "-"}
+                            </div>
 
-                    <div>
-                        <span>Vencimento</span>
-                        <strong>${contract.end}</strong>
+                        </div>
+
+
+                        <div class="contract-view-field">
+
+                            <label>
+                                Empresa
+                            </label>
+
+                            <div class="contract-view-value">
+                                ${contract.company || "-"}
+                            </div>
+
+                        </div>
+
+
+                        <div class="contract-view-field">
+
+                            <label>
+                                Categoria
+                            </label>
+
+                            <div class="contract-view-value">
+                                ${contract.category || "-"}
+                            </div>
+
+                        </div>
+
+
+                        <div class="contract-view-field">
+
+                            <label>
+                                Responsável
+                            </label>
+
+                            <div class="contract-view-value">
+                                ${contract.responsible || "-"}
+                            </div>
+
+                        </div>
+
+
                     </div>
 
                 </div>
 
+
+
+                <!-- =====================================
+                     VIGÊNCIA E VALORES
+                ====================================== -->
+
+                <div class="contract-view-section">
+
+                    <div class="contract-view-section-title">
+
+                        <div class="contract-view-section-icon">
+                            <i class="fa-solid fa-calendar-days"></i>
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Vigência e valores
+                            </strong>
+
+                            <span>
+                                Período e informações financeiras
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="contract-view-grid">
+
+
+                        <div class="contract-view-field">
+
+                            <label>
+                                Valor
+                            </label>
+
+                            <div class="contract-view-value">
+                                ${contract.value || "R$ 0,00"}
+                            </div>
+
+                        </div>
+
+
+                        <div class="contract-view-field">
+
+                            <label>
+                                Data de início
+                            </label>
+
+                            <div class="contract-view-value">
+                                ${contract.start || "-"}
+                            </div>
+
+                        </div>
+
+
+                        <div class="contract-view-field">
+
+                            <label>
+                                Data de vencimento
+                            </label>
+
+                            <div class="contract-view-value">
+                                ${contract.end || "-"}
+                            </div>
+
+                        </div>
+
+
+                        <div class="contract-view-field">
+
+                            <label>
+                                Status
+                            </label>
+
+                            <div class="contract-view-status">
+
+                                <span class="contract-status ${statusClass}">
+
+                                    <i class="fa-solid fa-circle"></i>
+
+                                    ${statusText}
+
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =====================================
+                     OBSERVAÇÕES
+                ====================================== -->
+
+                <div class="contract-view-section">
+
+                    <div class="contract-view-section-title">
+
+                        <div class="contract-view-section-icon">
+                            <i class="fa-solid fa-align-left"></i>
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Observações
+                            </strong>
+
+                            <span>
+                                Informações adicionais
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="contract-view-notes">
+
+                        ${contract.notes &&
+                    contract.notes.trim()
+                    ? contract.notes
+                    : "Nenhuma observação cadastrada."
+                }
+
+                    </div>
+
+                </div>
+
+
             </div>
 
         `,
+
 
             footer: `
 
