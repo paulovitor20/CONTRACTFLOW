@@ -40,9 +40,4 @@
 @import url("../../../app/pages/documents/list.css");
 @import url("../../../app/pages/alerts/list.css");
 @import url("../../../app/pages/reports/list.css");
-/* Futuras páginas */
-
-/*
-@import url("../../app/pages/users/users.css");
-@import url("../../app/pages/reports/reports.css");
-*/
+@import url("../../../app/pages/users/list.css");

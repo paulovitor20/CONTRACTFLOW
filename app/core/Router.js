@@ -52,6 +52,11 @@ class Router {
             js: "app/pages/reports/list.js",
             className: "ReportsPage"
         },
+        users: {
+            html: "app/pages/users/list.html",
+            js: "app/pages/users/list.js",
+            className: "UsersPage"
+        },
 
     };
 

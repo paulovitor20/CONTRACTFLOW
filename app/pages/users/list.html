@@ -1,0 +1,136 @@
+<section class="users-page">
+
+    <header class="page-header">
+        <div class="page-header-content">
+            <h1>Usuários</h1>
+            <p>Gerencie os usuários, perfis e acessos ao sistema.</p>
+        </div>
+
+        <button type="button" class="btn-primary" id="btn-new-user">
+            <i class="fa-solid fa-plus"></i>
+            Novo Usuário
+        </button>
+    </header>
+
+
+    <!-- FILTROS -->
+    <section class="users-toolbar">
+
+        <div class="users-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input
+                type="text"
+                id="users-search"
+                placeholder="Buscar por nome ou e-mail..."
+            >
+        </div>
+
+        <select id="users-role-filter">
+            <option value="">Todos os perfis</option>
+            <option value="Administrador">Administrador</option>
+            <option value="Gestor">Gestor</option>
+            <option value="Operador">Operador</option>
+            <option value="Visualizador">Visualizador</option>
+        </select>
+
+        <select id="users-status-filter">
+            <option value="">Todos os status</option>
+            <option value="ativo">Ativos</option>
+            <option value="inativo">Inativos</option>
+        </select>
+
+    </section>
+
+
+    <!-- INDICADORES -->
+    <section class="users-stats">
+
+        <article class="user-stat-card">
+            <div class="user-stat-icon">
+                <i class="fa-solid fa-users"></i>
+            </div>
+
+            <div>
+                <span>Total de usuários</span>
+                <strong id="users-total">0</strong>
+            </div>
+        </article>
+
+
+        <article class="user-stat-card">
+            <div class="user-stat-icon success">
+                <i class="fa-solid fa-user-check"></i>
+            </div>
+
+            <div>
+                <span>Usuários ativos</span>
+                <strong id="users-active">0</strong>
+            </div>
+        </article>
+
+
+        <article class="user-stat-card">
+            <div class="user-stat-icon warning">
+                <i class="fa-solid fa-user-clock"></i>
+            </div>
+
+            <div>
+                <span>Usuários inativos</span>
+                <strong id="users-inactive">0</strong>
+            </div>
+        </article>
+
+
+        <article class="user-stat-card">
+            <div class="user-stat-icon admin">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+
+            <div>
+                <span>Administradores</span>
+                <strong id="users-admins">0</strong>
+            </div>
+        </article>
+
+    </section>
+
+
+    <!-- TABELA -->
+    <section class="users-table-card">
+
+        <div class="users-table-header">
+            <div>
+                <h2>Usuários cadastrados</h2>
+                <p>Visualize os usuários e seus respectivos níveis de acesso.</p>
+            </div>
+
+            <span class="users-counter" id="users-counter">
+                0 usuários
+            </span>
+        </div>
+
+
+        <div class="users-table-wrapper">
+
+            <table class="users-table">
+
+                <thead>
+                    <tr>
+                        <th>Usuário</th>
+                        <th>E-mail</th>
+                        <th>Perfil</th>
+                        <th>Último acesso</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody id="users-table-body"></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</section>
