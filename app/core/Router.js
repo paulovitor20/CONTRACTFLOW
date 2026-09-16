@@ -57,6 +57,11 @@ class Router {
             js: "app/pages/users/list.js",
             className: "UsersPage"
         },
+        settings: {
+            html: "app/pages/settings/list.html",
+            js: "app/pages/settings/list.js",
+            className: "SettingsPage"
+        },
 
     };
 

@@ -1,0 +1,350 @@
+<section class="settings-page">
+
+    <header class="page-header">
+        <div class="page-header-content">
+            <h1>Configurações</h1>
+            <p>Configure as preferências e parâmetros do sistema.</p>
+        </div>
+    </header>
+
+
+    <div class="settings-layout">
+
+        <!-- MENU LATERAL -->
+        <aside class="settings-menu">
+
+            <button class="settings-menu-item active" data-section="general">
+                <i class="fa-solid fa-sliders"></i>
+                <span>
+                    <strong>Geral</strong>
+                    <small>Preferências do sistema</small>
+                </span>
+            </button>
+
+            <button class="settings-menu-item" data-section="company">
+                <i class="fa-solid fa-building"></i>
+                <span>
+                    <strong>Empresa</strong>
+                    <small>Dados da empresa</small>
+                </span>
+            </button>
+
+            <button class="settings-menu-item" data-section="notifications">
+                <i class="fa-regular fa-bell"></i>
+                <span>
+                    <strong>Notificações</strong>
+                    <small>Alertas e avisos</small>
+                </span>
+            </button>
+
+            <button class="settings-menu-item" data-section="security">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>
+                    <strong>Segurança</strong>
+                    <small>Controle de acesso</small>
+                </span>
+            </button>
+
+            <button class="settings-menu-item" data-section="system">
+                <i class="fa-solid fa-server"></i>
+                <span>
+                    <strong>Sistema</strong>
+                    <small>Informações técnicas</small>
+                </span>
+            </button>
+
+        </aside>
+
+
+        <!-- CONTEÚDO -->
+        <main class="settings-content">
+
+            <!-- GERAL -->
+            <section class="settings-section active" id="settings-general">
+
+                <div class="settings-section-header">
+                    <h2>Configurações gerais</h2>
+                    <p>Defina as principais preferências do sistema.</p>
+                </div>
+
+
+                <div class="settings-form-grid">
+
+                    <div class="settings-field">
+                        <label>Nome do sistema</label>
+                        <input
+                            type="text"
+                            value="ContractFlow"
+                            placeholder="Nome do sistema"
+                        >
+                    </div>
+
+                    <div class="settings-field">
+                        <label>Idioma</label>
+                        <select>
+                            <option selected>Português (Brasil)</option>
+                            <option>English</option>
+                            <option>Español</option>
+                        </select>
+                    </div>
+
+                    <div class="settings-field">
+                        <label>Formato de data</label>
+                        <select>
+                            <option selected>DD/MM/AAAA</option>
+                            <option>MM/DD/AAAA</option>
+                            <option>AAAA-MM-DD</option>
+                        </select>
+                    </div>
+
+                    <div class="settings-field">
+                        <label>Fuso horário</label>
+                        <select>
+                            <option selected>Brasília (GMT-3)</option>
+                            <option>Amazonas (GMT-4)</option>
+                            <option>Acre (GMT-5)</option>
+                        </select>
+                    </div>
+
+                </div>
+
+
+                <div class="settings-divider"></div>
+
+
+                <div class="settings-option">
+                    <div>
+                        <strong>Exibir página inicial</strong>
+                        <span>Defina a tela exibida ao entrar no sistema.</span>
+                    </div>
+
+                    <select>
+                        <option selected>Dashboard</option>
+                        <option>Contratos</option>
+                        <option>Empresas</option>
+                    </select>
+                </div>
+
+
+                <div class="settings-actions">
+                    <button class="btn-primary" type="button">
+                        Salvar alterações
+                    </button>
+                </div>
+
+            </section>
+
+
+            <!-- EMPRESA -->
+            <section class="settings-section" id="settings-company">
+
+                <div class="settings-section-header">
+                    <h2>Dados da empresa</h2>
+                    <p>Informações utilizadas pelo sistema.</p>
+                </div>
+
+                <div class="settings-form-grid">
+
+                    <div class="settings-field settings-field-full">
+                        <label>Razão social</label>
+                        <input
+                            type="text"
+                            value="Carvalho Comércio e Transportes Ltda"
+                        >
+                    </div>
+
+                    <div class="settings-field">
+                        <label>CNPJ</label>
+                        <input
+                            type="text"
+                            placeholder="00.000.000/0000-00"
+                        >
+                    </div>
+
+                    <div class="settings-field">
+                        <label>Telefone</label>
+                        <input
+                            type="text"
+                            placeholder="(00) 00000-0000"
+                        >
+                    </div>
+
+                    <div class="settings-field settings-field-full">
+                        <label>Endereço</label>
+                        <input
+                            type="text"
+                            placeholder="Endereço da empresa"
+                        >
+                    </div>
+
+                </div>
+
+                <div class="settings-actions">
+                    <button class="btn-primary" type="button">
+                        Salvar alterações
+                    </button>
+                </div>
+
+            </section>
+
+
+            <!-- NOTIFICAÇÕES -->
+            <section class="settings-section" id="settings-notifications">
+
+                <div class="settings-section-header">
+                    <h2>Notificações</h2>
+                    <p>Controle quais avisos serão exibidos aos usuários.</p>
+                </div>
+
+
+                <div class="settings-toggle-list">
+
+                    <div class="settings-toggle">
+                        <div>
+                            <strong>Alertas de vencimento</strong>
+                            <span>Receber alertas sobre contratos próximos do vencimento.</span>
+                        </div>
+
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span></span>
+                        </label>
+                    </div>
+
+
+                    <div class="settings-toggle">
+                        <div>
+                            <strong>Documentos pendentes</strong>
+                            <span>Alertar quando houver documentos pendentes.</span>
+                        </div>
+
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span></span>
+                        </label>
+                    </div>
+
+
+                    <div class="settings-toggle">
+                        <div>
+                            <strong>Novos usuários</strong>
+                            <span>Informar quando um novo usuário for cadastrado.</span>
+                        </div>
+
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span></span>
+                        </label>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- SEGURANÇA -->
+            <section class="settings-section" id="settings-security">
+
+                <div class="settings-section-header">
+                    <h2>Segurança</h2>
+                    <p>Configurações relacionadas à segurança e acesso.</p>
+                </div>
+
+
+                <div class="security-cards">
+
+                    <div class="security-card">
+                        <i class="fa-solid fa-lock"></i>
+
+                        <div>
+                            <strong>Autenticação</strong>
+                            <span>
+                                Controle de login e autenticação dos usuários.
+                            </span>
+                        </div>
+
+                        <span class="security-status">
+                            Configuração pendente
+                        </span>
+                    </div>
+
+
+                    <div class="security-card">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+
+                        <div>
+                            <strong>Tempo de sessão</strong>
+                            <span>
+                                Defina quanto tempo uma sessão poderá permanecer ativa.
+                            </span>
+                        </div>
+
+                        <select>
+                            <option>30 minutos</option>
+                            <option selected>1 hora</option>
+                            <option>4 horas</option>
+                            <option>8 horas</option>
+                        </select>
+                    </div>
+
+
+                    <div class="security-card">
+                        <i class="fa-solid fa-key"></i>
+
+                        <div>
+                            <strong>Política de senha</strong>
+                            <span>
+                                Regras de segurança para senhas dos usuários.
+                            </span>
+                        </div>
+
+                        <button class="settings-outline-btn">
+                            Configurar
+                        </button>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- SISTEMA -->
+            <section class="settings-section" id="settings-system">
+
+                <div class="settings-section-header">
+                    <h2>Informações do sistema</h2>
+                    <p>Informações técnicas e versão da aplicação.</p>
+                </div>
+
+
+                <div class="system-info-grid">
+
+                    <div>
+                        <span>Aplicação</span>
+                        <strong>ContractFlow</strong>
+                    </div>
+
+                    <div>
+                        <span>Versão</span>
+                        <strong>1.0.0</strong>
+                    </div>
+
+                    <div>
+                        <span>Ambiente</span>
+                        <strong>Desenvolvimento</strong>
+                    </div>
+
+                    <div>
+                        <span>Interface</span>
+                        <strong>Web</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</section>
