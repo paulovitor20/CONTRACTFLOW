@@ -37,12 +37,12 @@
 @import url("../../../app/pages/dashboard/dashboard.css");
 @import url("../../../app/pages/contracts/list.css");
 @import url("../../../app/pages/companies/list.css");
-
+@import url("../../../app/pages/documents/list.css");
+@import url("../../../app/pages/alerts/list.css");
+@import url("../../../app/pages/reports/list.css");
 /* Futuras páginas */
 
 /*
-@import url("../../app/pages/contracts/contracts.css");
-@import url("../../app/pages/companies/companies.css");
 @import url("../../app/pages/users/users.css");
 @import url("../../app/pages/reports/reports.css");
 */

@@ -1,0 +1,308 @@
+<section class="reports-page">
+
+    <header class="page-header">
+
+        <div class="page-header-content">
+            <h1>Relatórios</h1>
+            <p>Consulte indicadores e informações consolidadas dos contratos.</p>
+        </div>
+
+    </header>
+
+
+    <!-- FILTROS -->
+
+    <section class="reports-toolbar">
+
+        <div class="report-filter-group">
+
+            <label>Período</label>
+
+            <select id="report-period">
+                <option value="month">Este mês</option>
+                <option value="quarter">Este trimestre</option>
+                <option value="semester">Este semestre</option>
+                <option value="year" selected>Este ano</option>
+            </select>
+
+        </div>
+
+
+        <div class="report-filter-group">
+
+            <label>Empresa</label>
+
+            <select id="report-company">
+                <option value="">Todas as empresas</option>
+                <option>Carvalho Transportes</option>
+                <option>Vivo</option>
+                <option>AWS</option>
+                <option>Google</option>
+                <option>Sicredi</option>
+            </select>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="fx-btn fx-btn-secondary"
+            id="btn-filter-reports"
+        >
+            <i class="fa-solid fa-filter"></i>
+            Aplicar filtros
+        </button>
+
+    </section>
+
+
+    <!-- INDICADORES -->
+
+    <section class="reports-stats">
+
+        <div class="report-stat-card">
+
+            <div class="report-stat-icon">
+                <i class="fa-solid fa-file-contract"></i>
+            </div>
+
+            <div>
+                <span>Total de contratos</span>
+                <strong id="report-total">128</strong>
+            </div>
+
+        </div>
+
+
+        <div class="report-stat-card">
+
+            <div class="report-stat-icon success">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+
+            <div>
+                <span>Contratos ativos</span>
+                <strong id="report-active">98</strong>
+            </div>
+
+        </div>
+
+
+        <div class="report-stat-card">
+
+            <div class="report-stat-icon warning">
+                <i class="fa-solid fa-clock"></i>
+            </div>
+
+            <div>
+                <span>Próximos vencimentos</span>
+                <strong id="report-expiring">7</strong>
+            </div>
+
+        </div>
+
+
+        <div class="report-stat-card">
+
+            <div class="report-stat-icon danger">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+
+            <div>
+                <span>Contratos vencidos</span>
+                <strong id="report-expired">12</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RELATÓRIOS DISPONÍVEIS -->
+
+    <section class="reports-section">
+
+        <div class="reports-section-header">
+
+            <div>
+                <strong>Relatórios disponíveis</strong>
+                <span>Selecione um relatório para visualizar ou exportar.</span>
+            </div>
+
+        </div>
+
+
+        <div class="reports-grid">
+
+            <article class="report-card">
+
+                <div class="report-card-icon">
+                    <i class="fa-solid fa-file-contract"></i>
+                </div>
+
+                <div class="report-card-content">
+
+                    <h3>Relatório de Contratos</h3>
+
+                    <p>
+                        Lista completa dos contratos cadastrados,
+                        com status, valores e vencimentos.
+                    </p>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="report-card-action"
+                    title="Visualizar relatório"
+                >
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+            </article>
+
+
+            <article class="report-card">
+
+                <div class="report-card-icon">
+                    <i class="fa-solid fa-building"></i>
+                </div>
+
+                <div class="report-card-content">
+
+                    <h3>Relatório por Empresa</h3>
+
+                    <p>
+                        Consulte contratos e informações agrupadas
+                        por empresa.
+                    </p>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="report-card-action"
+                    title="Visualizar relatório"
+                >
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+            </article>
+
+
+            <article class="report-card">
+
+                <div class="report-card-icon warning">
+                    <i class="fa-solid fa-calendar-xmark"></i>
+                </div>
+
+                <div class="report-card-content">
+
+                    <h3>Vencimentos</h3>
+
+                    <p>
+                        Acompanhe contratos próximos do vencimento
+                        e contratos vencidos.
+                    </p>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="report-card-action"
+                    title="Visualizar relatório"
+                >
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+            </article>
+
+
+            <article class="report-card">
+
+                <div class="report-card-icon danger">
+                    <i class="fa-solid fa-file-circle-xmark"></i>
+                </div>
+
+                <div class="report-card-content">
+
+                    <h3>Documentos Pendentes</h3>
+
+                    <p>
+                        Identifique contratos com documentos
+                        ausentes ou que precisam de atualização.
+                    </p>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="report-card-action"
+                    title="Visualizar relatório"
+                >
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+            </article>
+
+
+            <article class="report-card">
+
+                <div class="report-card-icon success">
+                    <i class="fa-solid fa-chart-pie"></i>
+                </div>
+
+                <div class="report-card-content">
+
+                    <h3>Resumo Gerencial</h3>
+
+                    <p>
+                        Visão consolidada dos principais indicadores
+                        do sistema.
+                    </p>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="report-card-action"
+                    title="Visualizar relatório"
+                >
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+            </article>
+
+
+            <article class="report-card">
+
+                <div class="report-card-icon">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                </div>
+
+                <div class="report-card-content">
+
+                    <h3>Histórico de Contratos</h3>
+
+                    <p>
+                        Consulte alterações, movimentações e histórico
+                        dos contratos.
+                    </p>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="report-card-action"
+                    title="Visualizar relatório"
+                >
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+            </article>
+
+        </div>
+
+    </section>
+
+</section>

@@ -1,0 +1,144 @@
+<section class="documents-page">
+
+    <!-- CABEÇALHO -->
+    <header class="page-header">
+
+        <div class="page-header-content">
+            <h1>Documentos</h1>
+            <p>Centralize e gerencie os documentos dos contratos.</p>
+        </div>
+
+    </header>
+
+
+    <!-- FILTROS -->
+    <section class="documents-toolbar">
+
+        <div class="documents-search">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="document-search"
+                placeholder="Pesquisar documento..."
+            >
+
+        </div>
+
+
+        <select id="document-type-filter">
+            <option value="">Todos os tipos</option>
+            <option value="contrato">Contrato</option>
+            <option value="aditivo">Aditivo</option>
+            <option value="comprovante">Comprovante</option>
+            <option value="outros">Outros</option>
+        </select>
+
+
+        <select id="document-status-filter">
+            <option value="">Todos os status</option>
+            <option value="vigente">Vigente</option>
+            <option value="vencendo">Vencendo</option>
+            <option value="vencido">Vencido</option>
+        </select>
+
+
+        <button
+            type="button"
+            class="fx-btn fx-btn-secondary"
+        >
+            <i class="fa-solid fa-filter"></i>
+            Mais filtros
+        </button>
+
+    </section>
+
+
+    <!-- RESUMO -->
+    <section class="documents-stats">
+
+        <div class="document-stat-card">
+
+            <div class="document-stat-icon">
+                <i class="fa-solid fa-folder-open"></i>
+            </div>
+
+            <div>
+                <span>Total de documentos</span>
+                <strong id="documents-total">0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="document-stat-card">
+
+            <div class="document-stat-icon success">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+
+            <div>
+                <span>Documentos vigentes</span>
+                <strong id="documents-active">0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="document-stat-card">
+
+            <div class="document-stat-icon warning">
+                <i class="fa-solid fa-clock"></i>
+            </div>
+
+            <div>
+                <span>Vencendo</span>
+                <strong id="documents-expiring">0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="document-stat-card">
+
+            <div class="document-stat-icon danger">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+
+            <div>
+                <span>Vencidos</span>
+                <strong id="documents-expired">0</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TABELA -->
+    <section class="documents-table-card">
+
+        <table class="documents-table">
+
+            <thead>
+                <tr>
+                    <th>Documento</th>
+                    <th>Contrato</th>
+                    <th>Empresa</th>
+                    <th>Tipo</th>
+                    <th>Data</th>
+                    <th>Vencimento</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody id="documents-body">
+            </tbody>
+
+        </table>
+
+    </section>
+
+</section>

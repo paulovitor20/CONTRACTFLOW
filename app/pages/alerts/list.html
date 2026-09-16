@@ -1,0 +1,176 @@
+<section class="alerts-page">
+
+    <header class="page-header">
+
+        <div class="page-header-content">
+            <h1>Alertas</h1>
+            <p>Acompanhe vencimentos e situações que exigem atenção.</p>
+        </div>
+
+    </header>
+
+
+    <!-- RESUMO -->
+
+    <section class="alerts-stats">
+
+        <div class="alert-stat-card">
+
+            <div class="alert-stat-icon danger">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+
+            <div>
+                <span>Alertas críticos</span>
+                <strong id="alerts-critical">0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="alert-stat-card">
+
+            <div class="alert-stat-icon warning">
+                <i class="fa-solid fa-clock"></i>
+            </div>
+
+            <div>
+                <span>Próximos vencimentos</span>
+                <strong id="alerts-expiring">0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="alert-stat-card">
+
+            <div class="alert-stat-icon info">
+                <i class="fa-solid fa-bell"></i>
+            </div>
+
+            <div>
+                <span>Não lidos</span>
+                <strong id="alerts-unread">0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="alert-stat-card">
+
+            <div class="alert-stat-icon success">
+                <i class="fa-solid fa-check"></i>
+            </div>
+
+            <div>
+                <span>Resolvidos</span>
+                <strong id="alerts-resolved">0</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FILTROS -->
+
+    <section class="alerts-toolbar">
+
+        <div class="alerts-search">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="alert-search"
+                placeholder="Pesquisar alerta..."
+            >
+
+        </div>
+
+
+        <select id="alert-type-filter">
+
+            <option value="">
+                Todos os tipos
+            </option>
+
+            <option value="vencimento">
+                Vencimento
+            </option>
+
+            <option value="documento">
+                Documento
+            </option>
+
+            <option value="contrato">
+                Contrato
+            </option>
+
+            <option value="sistema">
+                Sistema
+            </option>
+
+        </select>
+
+
+        <select id="alert-status-filter">
+
+            <option value="">
+                Todos os status
+            </option>
+
+            <option value="pendente">
+                Pendente
+            </option>
+
+            <option value="lido">
+                Lido
+            </option>
+
+            <option value="resolvido">
+                Resolvido
+            </option>
+
+        </select>
+
+
+        <button
+            type="button"
+            class="fx-btn fx-btn-secondary"
+        >
+            <i class="fa-solid fa-filter"></i>
+            Mais filtros
+        </button>
+
+    </section>
+
+
+    <!-- LISTA -->
+
+    <section class="alerts-list-card">
+
+        <div class="alerts-list-header">
+
+            <div>
+                <strong>Central de alertas</strong>
+                <span>Ocorrências que precisam da sua atenção</span>
+            </div>
+
+            <button
+                type="button"
+                class="alerts-mark-read"
+                id="btn-mark-all-read"
+            >
+                <i class="fa-solid fa-check-double"></i>
+                Marcar todos como lidos
+            </button>
+
+        </div>
+
+
+        <div id="alerts-list"></div>
+
+    </section>
+
+</section>

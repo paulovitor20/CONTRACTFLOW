@@ -34,8 +34,24 @@ class Router {
             js: "app/pages/companies/list.js",
 
             className: "CompaniesPage"
+        },
 
-        }
+        documents: {
+            html: "app/pages/documents/list.html",
+            js: "app/pages/documents/list.js",
+            className: "DocumentsPage"
+        },
+
+        alerts: {
+            html: "app/pages/alerts/list.html",
+            js: "app/pages/alerts/list.js",
+            className: "AlertsPage"
+        },
+        reports: {
+            html: "app/pages/reports/list.html",
+            js: "app/pages/reports/list.js",
+            className: "ReportsPage"
+        },
 
     };
 
